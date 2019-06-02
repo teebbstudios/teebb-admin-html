@@ -81,6 +81,12 @@ function modules() {
         './node_modules/sweetalert2/dist/*',
     ])
         .pipe(gulp.dest('./vendor/sweetalert2'));
+
+    var sortableJs = gulp.src([
+        './node_modules/sortablejs/*.js',
+    ])
+        .pipe(gulp.dest('./vendor/sortablejs'));
+
     var transliteration = gulp.src([
         './node_modules/transliteration/dist/browser/*',
     ])

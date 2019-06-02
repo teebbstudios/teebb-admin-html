@@ -82,8 +82,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">类型管理:</h6>
-                    <a class="collapse-item" href="add-content-type.html">添加类型</a>
-                    <a class="collapse-item" href="manage-content-type.html">管理类型</a>
+                    <a class="collapse-item" href="utilities-color.html">添加类型</a>
+                    <a class="collapse-item" href="utilities-border.html">管理类型</a>
                 </div>
             </div>
         </li>
@@ -93,14 +93,14 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tagsManageMenu"
                aria-expanded="true" aria-controls="tagsManageMenu">
                 <i class="fas fa-fw fa-tags"></i>
-                <span>分类</span>
+                <span>标签</span>
             </a>
             <div id="tagsManageMenu" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">分类管理:</h6>
-                    <a class="collapse-item" href="utilities-color.html">添加分类</a>
-                    <a class="collapse-item" href="utilities-border.html">管理分类</a>
+                    <h6 class="collapse-header">标签管理:</h6>
+                    <a class="collapse-item" href="utilities-color.html">添加标签</a>
+                    <a class="collapse-item" href="utilities-border.html">管理标签</a>
                 </div>
             </div>
         </li>
@@ -255,6 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#">内容</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">编辑类型</li>
                     </ol>
                 </nav>
 
@@ -459,310 +461,93 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">控制台</h1>
-                    <a href="select-content-type.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容</a>
-
+                    <h1 class="h3 mb-0 text-gray-800">编辑类型</h1>
                 </div>
 
-                <!-- Content Row -->
-                <div class="row">
+                <!-- FULL WIDTH Content -->
+                <div class="full-width-wrapper">
 
-                    <!-- 内容数量 每月 Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            内容量(最近一月)
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">123</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-file-alt fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                    <!-- 提示 Card Example -->
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="small text-muted">内容类型由不同的内容字段组成，字段可以是图像、文本、数字、标签或者其他。任意搭配字段生成您的内容类型。</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
 
-                    <!-- 内容类型数量 Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">内容类型
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-boxes fa-2x text-gray-300"></i>
-                                    </div>
+
+                    <!-- 编辑类型 -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header d-flex flex-row align-items-center justify-content-between">
+
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active small" href="edit-content-type.html">编辑类型</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link small" href="manage-content-type-field.html">管理字段</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link small" href="manage-content-field-form-show.html">管理字段显示</a>
+                                </li>
+                            </ul>
+
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                     aria-labelledby="dropdownContentTypesMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>管理类型</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- 用户量 (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">新用户(最近一月)
+                        </div>
+                        <div class="card-body">
+
+                            <div class="edit-content-type-form">
+                                <form action="#" method="post">
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="content_type_name">名称<sup class="text-danger">*</sup></label>
+                                            <input type="text" id="content_type_name" name="" value="文章" class="transliterate form-control form-control-sm" required="required">
+                                            <div class="small mt-1 text-muted">此内容类型的名称。此文本将显示于添加内容页面的列表中。此名称必须唯一。</div>
                                         </div>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+
+                                        <div class="col-12 mb-3 form-inline form-alias">
+                                            <label>机读名称<sup class="text-danger">*</sup></label>
+                                            <div class="ml-2 text-alias-wrapper mb-2 mb-sm-0">
+                                                <span class="text-alias">article</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Pending Requests Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            新评论(最近一月)
+                                        <div class="col-12 mb-3">
+                                            <label for="content_type_description">描述</label>
+                                            <textarea id="content_type_description" name="" class="content-type-description form-control form-control-sm w-100">基本的文章类型，包含标题、Body、标签和图像字段。</textarea>
+                                            <div class="small mt-1 text-muted">简短的描述该内容类型的帮助信息，此信息只在内容类型列表页面显示。</div>
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+
                                     </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Content Row -->
-                <div class="row">
-
-                    <!-- Content Column LEFT -->
-                    <div class="col-lg-6 mb-4">
-
-                        <!-- 欢迎使用 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">欢迎使用</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                         src="img/undraw_posting_photo.svg" alt="">
-                                </div>
-                                <p>欢迎您使用TeebbCMF,TeebbCMF是一个高扩展,高性能,轻量的内容管理框架。和许多其他系统一样,TeebbCMF基于<a
-                                        href="https://www.symfony.com" rel="nofollow" target="_blank">Symfony</a>开源框架开发。
-                                </p>
-                                <a target="_blank" rel="nofollow" href="https://undraw.co/">查看文档&rarr;</a>
-                            </div>
-                        </div>
-
-                        <!-- 最新内容 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">内容类型</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                         aria-labelledby="dropdownContentTypesMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-list text-gray-500 pr-2"></i>查看所有类型</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">内容类型</th>
-                                            <th scope="col">别名</th>
-                                            <th scope="col">操作</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td scope="row">文章</td>
-                                            <td>article</td>
-                                            <td><a href="#">发布内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">页面</td>
-                                            <td>page</td>
-                                            <td><a href="#">发布内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">商品类型</td>
-                                            <td>product</td>
-                                            <td><a href="#">发布内容</a></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 最新内容 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">新增用户</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownNewUsersMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                         aria-labelledby="dropdownNewUsersMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-list text-gray-500 pr-2"></i>查看所有用户</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <a href="#">Cras jusjusto </a>
-                                        <span class="pl-3">注册于下午7:57 05月19日</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Cras odio </a>
-                                        <span class="pl-3">注册于下午7:57 05月19日</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Cras justo </a>
-                                        <span class="pl-3">注册于下午7:57 05月19日</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Cras justo </a>
-                                        <span class="pl-3">注册于下午7:57 05月19日</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Cras justo</a>
-                                        <span class="pl-3">注册于下午7:57 05月19日</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Content Column  RIGHT -->
-                    <div class="col-lg-6 mb-4">
-                        <!-- 最新内容 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">最新内容</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownNewContentsMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                         aria-labelledby="dropdownNewContentsMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-list text-gray-500 pr-2"></i>查看所有内容</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <span class="pr-3">下午7:57 05月19日</span>
-                                        <a href="#">Cras justo odio Cras justo </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="pr-3">下午7:57 05月19日</span>
-                                        <a href="#">Cras justo odio Cras justo </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="pr-3">下午7:57 05月19日</span>
-                                        <a href="#">Cras justo odio Cras justo </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="pr-3">下午7:57 05月19日</span>
-                                        <a href="#">Cras justo odio Cras justo </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="pr-3">下午7:57 05月19日</span>
-                                        <a href="#">Cras justo odio Cras justo </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- 最新评论 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">最新评论</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownNewCommentsMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                         aria-labelledby="dropdownNewCommentsMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-list text-gray-500 pr-2"></i>查看所有评论</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-user-check text-gray-500 pr-2"></i>我的评论</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">发表在《List group item heading》</h6>
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
+                                            <span class="icon text-white-50">
+                                              <i class="fas fa-check"></i>
+                                            </span>
+                                                <span class="text">保存内容类型</span>
+                                            </a>
                                         </div>
-                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        <small>由admin发表于3 days ago .</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">发表在《List group item heading》</h6>
-                                        </div>
-                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        <small>由admin发表于3 days ago .</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">发表在《List group item heading》</h6>
-                                        </div>
-                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        <small>由admin发表于3 days ago .</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">发表在《List group item heading》</h6>
-                                        </div>
-                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        <small>由admin发表于3 days ago .</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">发表在《List group item heading》</h6>
-                                        </div>
-                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        <small>由admin发表于3 days ago .</small>
-                                    </a>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
                 </div>
+
             </div>
             <!-- /.container-fluid -->
 
@@ -773,7 +558,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; TeebbCMF 2019</span>
+                    <span>Copyright &copy; Your Website 2019</span>
                 </div>
             </div>
         </footer>
@@ -790,12 +575,16 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Transliteration JavaScript-->
+<script src="vendor/transliteration/bundle.umd.min.js"></script>
 
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>

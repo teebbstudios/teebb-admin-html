@@ -256,7 +256,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">添加内容</li>
+                        <li class="breadcrumb-item active" aria-current="page">管理类型</li>
                     </ol>
                 </nav>
 
@@ -461,7 +461,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">添加类型</h1>
+                    <h1 class="h3 mb-0 text-gray-800">管理类型</h1>
 
                 </div>
 
@@ -484,7 +484,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容类型</a>
+                            <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm"><i
+                                    class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容类型</a>
 
                             <div class="table-responsive mt-3">
                                 <table class="table table-striped">
@@ -500,24 +501,44 @@
                                         <td class="text-nowrap"><a href="#">文章</a></td>
                                         <td class="d-none d-md-table-cell">基本的文章类型，包含标题、Body、标签和图像字段。</td>
                                         <td class="text-nowrap">
-                                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                  <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">选择</span>
-                                            </a>
+
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="内容类型操作按钮组">
+                                                <a href="edit-content-type.html" class="btn btn-primary text-white">编辑</a>
+                                                <a href="delete-content-type.html" class="btn btn-danger text-white">删除</a>
+
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button id="btnGroupDrop_{{id}}" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        管理字段
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop_{{id}}">
+                                                        <a class="dropdown-item" href="manage-content-type-field.html">管理字段</a>
+                                                        <a class="dropdown-item" href="manage-content-field-form-show.html">管理字段显示</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="text-nowrap"><a href="#">页面</a></td>
                                         <td class="d-none d-md-table-cell">基本的页面类型，包含标题、Body，可以添加任何类型的内容并在合适的模板中显示。</td>
                                         <td class="text-nowrap">
-                                            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                  <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">选择</span>
-                                            </a>
+
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="内容类型操作按钮组">
+                                                <a href="#" class="btn btn-primary text-white">编辑</a>
+                                                <a href="#" class="btn btn-danger text-white">删除</a>
+
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button id="btnGroupDrop_{{id1}}" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        管理字段
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop_{{id1}}">
+                                                        <a class="dropdown-item" href="manage-content-type-field.html">管理字段</a>
+                                                        <a class="dropdown-item" href="manage-content-field-form-show.html">管理字段显示</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     </tbody>
