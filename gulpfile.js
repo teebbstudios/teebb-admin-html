@@ -97,7 +97,14 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/transliteration'));
 
-    return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing);
+    var dropzone = gulp.src([
+        './node_modules/dropzone/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/dropzone'));
+
+    return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing,
+        sweetalert2, sortableJs, bootstrapSelect, transliteration, dropzone
+        );
 }
 
 // CSS task

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>管理文件</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -464,60 +464,53 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">管理内容</h1>
+                    <h1 class="h3 mb-0 text-gray-800">管理文件</h1>
                     <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容</a>
+                            class="fas fa-upload fa-sm text-white-50 pr-2"></i>上传文件</a>
+
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
 
+                    <!--过滤card-->
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <!--内容过滤-->
-                            <div class="content-filter">
+
+                            <div class="file-filter">
                                 <form action="#" method="post">
-                                    <div class="form-row">
-                                        <div class="col-12 col-sm-6 mb-3">
-                                            <label for="filter_content_title">标题</label>
-                                            <input type="text" class="form-control form-control-sm"
-                                                   id="filter_content_title" placeholder="内容标题" value="">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-auto mb-3 mb-md-0">
+                                            <label class="sr-only" for="filter_files_title">文件名称</label>
+                                            <input type="text" class="form-control form-control-sm" id="filter_files_title" placeholder="搜索文件名称">
                                         </div>
-                                        <div class="col-12 col-sm-3 mb-3">
-                                            <label for="filter_content_type">内容类型</label>
-                                            <select class="form-control form-control-sm" id="filter_content_type">
-                                                <option selected>－任意－</option>
-                                                <option value="1">文章</option>
-                                                <option value="2">页面</option>
-                                                <option value="3">商品类型</option>
+                                        <div class="col-auto mb-3 mb-md-0">
+                                            <label class="sr-only" for="filter_files_date">日期</label>
+                                            <select id="filter_files_date" class="form-control form-control-sm">
+                                                <option>全部日期</option>
+                                                <option>2019年五月</option>
+                                                <option>2019年四月</option>
                                             </select>
                                         </div>
-                                        <div class="col-12 col-sm-3 mb-3">
-                                            <label for="filter_content_published">发布状态</label>
-                                            <select class="form-control form-control-sm" id="filter_content_published">
-                                                <option selected>－任意－</option>
-                                                <option value="1">已发布</option>
-                                                <option value="2">未发布</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-sm-3 mb-3">
-                                            <a href="#" class="btn btn-secondary btn-icon-split btn-sm">
+                                        <div class="col-auto mb-md-0">
+                                            <button class="btn btn-secondary btn-icon-split btn-sm">
                                                 <span class="icon text-white-50">
                                                   <i class="fas fa-filter"></i>
                                                 </span>
                                                 <span class="text">过滤</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
 
-                    <!-- 管理内容 -->
+                    <!-- 管理文件 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">内容列表</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">文件列表</h6>
                             <div class="dropdown no-arrow">
                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownNewContentsMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -526,7 +519,7 @@
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                      aria-labelledby="dropdownNewContentsMenuLink">
                                     <a class="dropdown-item" href="#"><i
-                                            class="fa fa-plus-circle text-gray-500 pr-2"></i>添加内容</a>
+                                            class="fa fa-upload text-gray-500 pr-2"></i>上传文件</a>
                                 </div>
                             </div>
                         </div>
@@ -535,14 +528,12 @@
                             <div class="content-list mt-3">
                                 <form action="#" method="post">
                                     <!--内容批量操作-->
-                                    <div class="content-bat-option form-row">
+                                    <div class="form-row">
                                         <div class="col-6 col-sm-3 pr-2 mb-3">
                                             <label for="select_bat_option_top" class="sr-only">批量操作</label>
                                             <select id="select_bat_option_top" class="form-control form-control-sm" name="">
                                                 <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
+                                                <option>永久删除</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-sm-3 pr-2 mb-3">
@@ -573,11 +564,10 @@
                                                 <th scope="col">
                                                     <input type="checkbox" class="form-check check-all" title="选择所有行">
                                                 </th>
-                                                <th scope="col">标题</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">内容类型</th>
+                                                <th scope="col">文件</th>
+                                                <th scope="col">类型</th>
                                                 <th scope="col" class="d-none d-sm-table-cell">作者</th>
-                                                <th scope="col">状态</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">更新日期</th>
+                                                <th scope="col" class="d-none d-sm-table-cell">日期</th>
                                                 <th scope="col">操作</th>
                                             </tr>
                                             </thead>
@@ -586,11 +576,268 @@
                                                 <td scope="row">
                                                     <input type="checkbox" class="form-check" value="">
                                                 </td>
-                                                <td><a href="#">这是一篇文章的标题1</a></td>
-                                                <td class="d-none d-sm-table-cell">文章</td>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="img/undraw_posting_photo.svg" class="align-self-start mr-3 rect-80" alt="...">
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                          </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">image</span>
+                                                </td>
                                                 <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
-                                                <td>已发布</td>
-                                                <td class="d-none d-sm-table-cell">2019-05-21 19:34:21</td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+
+                                                        <i class="fas fa-file-archive align-self-start mr-3 rect-80 text-center"></i>
+
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media2</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">zip</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+
+                                                        <i class="fas fa-file-alt align-self-start mr-3 rect-80 text-center"></i>
+
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media3</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">txt</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+
+                                                        <i class="fas fa-file-audio align-self-start mr-3 rect-80 text-center"></i>
+
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">mp3</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file-video align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">video</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file-pdf align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">pdf</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file-word align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">word</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file-excel align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">excel</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file-powerpoint align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">powerpoint</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
+                                                <td class="text-nowrap">
+                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td>
+                                                    <div class="media">
+                                                        <i class="fas fa-file align-self-start mr-3 rect-80 text-center"></i>
+                                                        <div class="media-body d-none d-md-block">
+                                                            <h5 class="mt-0"><a href="#">Top-aligned media</a></h5>
+                                                            <p>Cras sit amet nibh liberotudin. tempus viverra turpis.  Donec lacinia congue felis in faucibus.</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-dark">other</span>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
+                                                <td class="d-none d-sm-table-cell">2019-05-21</td>
                                                 <td class="text-nowrap">
                                                     <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
                                                             class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
@@ -610,9 +857,7 @@
                                             <label for="select_bat_option_bottom" class="sr-only">批量操作</label>
                                             <select id="select_bat_option_bottom" class="form-control form-control-sm" name="">
                                                 <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
+                                                <option>永久删除</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-sm-3 pr-2 mb-3">

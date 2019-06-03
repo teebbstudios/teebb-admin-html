@@ -36,6 +36,7 @@
         "bootstrap-select": "^1.13.10",
         "chart.js": "2.8.0",
         "datatables.net-bs4": "1.10.19",
+        "dropzone": "^5.5.1",
         "jquery": "3.4.1",
         "jquery.easing": "^1.4.1",
         "popper.js": "^1.15.0",
