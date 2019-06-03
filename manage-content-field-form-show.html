@@ -511,13 +511,12 @@
                                 <a href="add-field.html" class="btn btn-sm btn-secondary shadow-sm"><i
                                         class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加字段</a>
 
-                                <div class="table-responsive mt-3">
+                                <div class="mt-3">
 
                                     <form action="#" method="post">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col"><i class="fas fa-arrows-alt"></i></th>
                                                     <th scope="col">标签</th>
                                                     <th scope="col" class="d-none d-sm-table-cell">字段类型</th>
                                                     <th scope="col">权重</th>
@@ -526,28 +525,36 @@
 
                                             <tbody id="js-sortable-tbody">
                                                 <tr class="js-sortable-item">
-                                                    <td><a href="#" class="js-modify-weight"><i class="fas fa-arrows-alt"></i></a></td>
-                                                    <td>标题</td>
+                                                    <td>
+                                                        <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                        标题
+                                                    </td>
                                                     <td class="d-none d-sm-table-cell"><a href="#">纯文本</a></td>
-                                                    <td class="text-nowrap">
-                                                        <input type="number" class="input-field-weight" name="field[weight]" required>
+                                                    <td>
+                                                        <input type="number" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="js-sortable-item">
+                                                    <td>
+                                                        <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                        正文
+                                                    </td>
+                                                    <td class="d-none d-sm-table-cell"><a href="#">文本（已格式化，长，带摘要）</a></td>
+                                                    <td>
+                                                        <input type="number" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
                                                     </td>
 
                                                 </tr>
+
                                                 <tr class="js-sortable-item">
-                                                    <td><a href="#" class="js-modify-weight"><i class="fas fa-arrows-alt"></i></a></td>
-                                                    <td>正文</td>
-                                                    <td class="d-none d-sm-table-cell"><a href="#">文本（已格式化，长，带摘要）</a></td>
-                                                    <td class="text-nowrap">
-                                                        <input type="number" class="input-field-weight" name="field[weight]" required>
+                                                    <td>
+                                                        <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                        标签
                                                     </td>
-                                                </tr>
-                                                <tr class="js-sortable-item">
-                                                    <td><a href="#" class="js-modify-weight"><i class="fas fa-arrows-alt"></i></a></td>
-                                                    <td>标签</td>
                                                     <td class="d-none d-sm-table-cell"><a href="#">分类</a></td>
-                                                    <td class="text-nowrap">
-                                                        <input type="number" class="input-field-weight" name="field[weight]" required>
+                                                    <td>
+                                                        <input type="number" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -617,11 +624,26 @@
 
 <script src="vendor/sortablejs/Sortable.min.js"></script>
 
-<script src="js/features/sortable.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
+<!--Sortable-->
+<script type="text/javascript">
+    //内容类型字段管理 使用sortablejs库调整字段权重
+    var el = document.getElementById('js-sortable-tbody');
+    var sortable = new Sortable(el, {
+        handle: '.js-sortable', // handle's class
+        animation: 150,
+        // Element dragging ended
+        onEnd: function (/**Event*/evt) {
+            var $weightInputs = $(el).find('input[type=number].input-field-weight');
+
+            $.each($weightInputs, function (index, input) {
+                $(input).val((index + 1) * 5);
+            });
+        },
+    });
+</script>
 
 </body>
 

@@ -87,6 +87,11 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/sortablejs'));
 
+    var bootstrapSelect = gulp.src([
+        './node_modules/bootstrap-select/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/bootstrap-select'));
+
     var transliteration = gulp.src([
         './node_modules/transliteration/dist/browser/*',
     ])
@@ -126,7 +131,9 @@ function js() {
     return gulp
         .src([
             './js/*.js',
+            './js/**/*.js',
             '!./js/*.min.js',
+            '!./js/**/*.min.js',
         ])
         .pipe(uglify())
         .pipe(header(banner, {

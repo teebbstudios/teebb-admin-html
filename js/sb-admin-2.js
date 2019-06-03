@@ -190,5 +190,14 @@
         $(this).val(relacedValue);
     });
 
+    //取消a.js-modify-field-weight a.js-modify-term默认行为
+    $(document).on('click', 'a.js-sortable', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
 
+    //Bootstrap Select 搜索框样式修改
+    $(document).ready(function () {
+        $('.bootstrap-select .bs-searchbox input').addClass('form-control-sm');
+    });
 })(jQuery); // End of use strict
