@@ -9,14 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>添加文件</title>
+    <title>编辑文件-图片</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
-    <link href="vendor/dropzone/min/dropzone.min.css" rel="stylesheet">
+    <!--tui.image-editor CSS -->
+    <link type="text/css" href="vendor/tui-color-picker/tui-color-picker.css" rel="stylesheet">
+
+    <link type="text/css" href="vendor/tui-image-editor/dist/tui-image-editor.min.css" rel="stylesheet">
+    <link type="text/css" href="vendor/tui-image-editor/service-basic.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -463,76 +467,303 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">添加文件</h1>
+                    <h1 class="h3 mb-0 text-gray-800">编辑文件</h1>
+                    <a href="add-files.html" class="btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-upload fa-sm text-white-50 pr-2"></i>上传文件</a>
                 </div>
 
-                <!-- FULL WIDTH Content -->
-                <div class="full-width-wrapper">
+                <!--编辑文件 页面布局 左8 右4-->
+                <div class="row">
 
-                    <!--文件上传-->
-                    <div id="container">
-
-                        <div id="dropzone" class="teebb-dropzone">
-                            <div class="dz-message">
-                                <p class="text-gray-500">将文件拖到这里</p>
-                                <p class="text-gray-500">或</p>
-                                <button class="btn btn-primary btn-sm fileinput-button">
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                    <span>选择文件</span>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="card shadow mb-3">
+                            <div class="card-header d-sm-flex align-items-center justify-content-between  py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">编辑文件</h6>
+                                <button class="btn btn-sm btn-primary shadow-sm d-inline" type="button" data-toggle="modal" data-target=".bd-image-editor-modal-lg">
+                                    <i class="fas fa-crop-alt fa-sm text-white-50 pr-2"></i>编辑图像
                                 </button>
                             </div>
-
-                        </div>
-                        <div class="small text-muted">最大上传文件大小：2 MB。</div>
-                        <div class="small text-muted">您的权限允许上传的文件类型：txt，jpg，png。</div>
-
-                        <!--
-                        data-dz-thumbnail：使用后代表该标签是存放缩略图的标签【这里必须是一个 <img /> 元素 ，并且alt 和 src 属性将被 Dropzone改变】
-                        data-dz-name：存放文件名
-                        data-dz-errormessage：存放错误信息
-                        data-dz-size：存放文件大小
-                        data-dz-remove ：删除队列中的文件，或者取消正在从队列上传到服务器的文件
-                        data-dz-uploadprogress：上传进度【( 当这里有一个 uploadprogress事件时， Dropzone 将更改 style.width 属性从 0% 到 100% )】
-                        -->
-
-                        <div class="table table-striped files mt-3 d-none" id="previews">
-
-                            <div id="template" class="file-row">
-                                <div class="align-middle">
-                                    <span class="preview"><img data-dz-thumbnail/></span>
+                            <div class="card-body">
+                                <div class="form-row mb-3">
+                                    <img src="img/undraw_posting_photo.svg" alt="" class="img-fluid rounded">
                                 </div>
-                                <div class="align-middle">
-                                    <p class="name" data-dz-name></p>
-                                    <strong class="small text-danger" data-dz-errormessage></strong>
-                                </div>
-                                <div class="align-middle">
-                                    <p class="size" data-dz-size></p>
-                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0"
-                                         aria-valuemax="100" aria-valuenow="0">
-                                        <div class="progress-bar progress-bar-success" style="width:0%;"
-                                             data-dz-uploadprogress></div>
-                                    </div>
-                                </div>
-                                <div class="align-middle text-nowrap">
-                                    <a href="#" class="btn btn-sm btn-primary edit">
-                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span>编辑</span>
-                                    </a>
-                                    <button data-dz-remove class="btn btn-danger btn-sm delete">
-                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span>删除</span>
-                                    </button>
+                                <div class="form-row mb-3">
+
+                                    <table class="table">
+                                        <thead class="sr-only">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">信息</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">文件名：</th>
+                                            <td>cropped-QQ截图20160330202437.png</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">文件类型：</th>
+                                            <td>image/jpeg</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">文件大小：</td>
+                                            <td> 766 KB</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">分辨率：</td>
+                                            <td>954 × 1300</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">上传于：</td>
+                                            <td>2019年5月16日 @ 23:25</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">文件信息</h6>
+                            </div>
+                            <div class="card-body">
+                                <form action="#" method="post">
+                                    <div class="form-row mb-3">
+                                        <label for="file_title">标题</label>
+                                        <input id="file_title" type="text" class="form-control form-control-sm input-group-sm" name="" value="这是一个文件标题">
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label for="file_url">url</label>
+                                        <input id="file_url" type="text" disabled class="form-control form-control-sm" name="" value="http://www.quanweiwei.cn/uploads/hsdfasfa.jpg">
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label for="file_alt">替代文本</label>
+                                        <input id="file_alt" type="text" class="form-control form-control-sm input-group-sm" name="" value="这是一个文件alt">
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label for="file_description">文件说明</label>
+                                        <textarea id="file_description" class="form-control form-control-sm" name="" ></textarea>
+                                    </div>
 
+                                    <button class="btn btn-sm btn-primary shadow-sm d-inline" type="button">
+                                        <i class="fas fa-save fa-sm text-white-50 pr-2"></i>保存
+                                    </button>
+
+                                    <button class="btn btn-sm btn-danger shadow-sm d-inline" type="button">
+                                        <i class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>永久删除
+                                    </button>
+
+                                </form>
+
+                            </div>
                         </div>
                     </div>
 
-
                 </div>
-
             </div>
             <!-- /.container-fluid -->
+
+            <!--image editor modal-->
+            <div class="modal fade bd-image-editor-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"><span class="name"><i class="fas fa-crop-alt"></i> 编辑图像</span></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tui-image-editor-controls">
+                                <ul class="menu mb-3">
+                                    <li class="menu-item disabled btn btn-dark btn-sm" id="btn-undo" title="撤销"><i class="fas fa-undo"></i></li>
+                                    <li class="menu-item disabled btn btn-dark btn-sm" id="btn-redo" title="重做"><i class="fas fa-redo"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-clear-objects" title="清除对象"><i class="fas fa-trash-alt"> ALL</i> </li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-remove-active-object" title="删除活动对象"><i class="fas fa-trash"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-crop" title="剪切"><i class="fas fa-crop-alt"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-flip" title="翻转"><i class="fas fa-arrows-alt-h"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-rotation" title="旋转"><i class="fas fa-circle-notch"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-draw-line" title="画线"><i class="fas fa-pencil-alt"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-draw-shape" title="形状"><i class="fas fa-shapes"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-text" title="文字"><i class="fas fa-italic"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-mask-filter" title="遮照"><i class="fas fa-mask"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-image-filter" title="滤镜"><i class="fas fa-paint-roller"></i></li>
+                                </ul>
+                                <div class="sub-menu-container" id="crop-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm btn-secondary" id="btn-apply-crop" title="应用"><i class="fas fa-check"></i> </li>
+                                        <li class="menu-item btn btn-sm btn-secondary" id="btn-cancel-crop" title="取消"><i class="fas fa-times-circle"></i> </li>
+                                       </ul>
+                                </div>
+                                <div class="sub-menu-container" id="flip-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm btn-secondary" id="btn-flip-x" title="左右翻转"><i class="fas fa-arrows-alt-h"></i></li>
+                                        <li class="menu-item btn btn-sm btn-secondary" id="btn-flip-y" title="上下翻转"><i class="fas fa-arrows-alt-v"></i></li>
+                                        <li class="menu-item btn btn-sm btn-secondary" id="btn-reset-flip" title="恢复"><i class="fas fa-sync"></i></li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                                <div class="sub-menu-container" id="rotation-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm" id="btn-rotate-clockwise"><i class="fas fa-redo-alt"></i> 30<sup>。</sup></li>
+                                        <li class="menu-item btn btn-sm" id="btn-rotate-counter-clockwise"><i class="fas fa-undo-alt"></i> 30<sup>。</sup></li>
+                                        <li class="menu-item btn btn-sm no-pointer">
+                                            <label class="small">旋转<input id="input-rotation-range" type="range" min="-360" value="0" max="360"></label>
+
+                                        </li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                                <div class="sub-menu-container menu" id="draw-line-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm">
+                                            <label class="small"><input type="radio" name="select-line-type" value="freeDrawing" checked="checked">自由</label>
+                                            <label class="small"><input type="radio" name="select-line-type" value="lineDrawing">直线</label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm">
+                                            <div id="tui-brush-color-picker" class="small">画笔颜色</div>
+                                        </li>
+                                        <li class="menu-item btn btn-sm"><label class="menu-item no-pointer small">画笔宽度<input id="input-brush-width-range" type="range" min="5" max="30" value="12"></label></li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                                <div class="sub-menu-container" id="draw-shape-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm">
+                                            <label class="small"><input type="radio" name="select-shape-type" value="rect" checked="checked">矩形</label>
+                                            <label class="small"><input type="radio" name="select-shape-type" value="circle">圆形</label>
+                                            <label class="small"><input type="radio" name="select-shape-type" value="triangle">三角形</label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm">
+                                            <select name="select-color-type">
+                                                <option value="fill" class="small">填充</option>
+                                                <option value="stroke" class="small">描边</option>
+                                            </select>
+                                            <label class="small"><input type="checkbox" id="input-check-transparent">透明</label>
+                                            <div id="tui-shape-color-picker"></div>
+                                        </li>
+                                        <li class="menu-item btn btn-sm"><label class="menu-item no-pointer small">描边宽度<input id="input-stroke-width-range" type="range" min="0" max="300" value="12"></label></li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="sub-menu-container" id="text-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm">
+                                            <div>
+                                                <button class="btn-text-style small" data-style-type="b">粗体</button>
+                                                <button class="btn-text-style small" data-style-type="i">斜体</button>
+                                                <button class="btn-text-style small" data-style-type="u">下划线</button>
+                                            </div>
+                                            <div>
+                                                <button class="btn-text-style small" data-style-type="l">左对齐</button>
+                                                <button class="btn-text-style small" data-style-type="c">居中</button>
+                                                <button class="btn-text-style small" data-style-type="r">右对齐</button>
+                                            </div>
+                                        </li>
+                                        <li class="menu-item btn btn-sm"><label class="no-pointer"><input id="input-font-size-range" type="range" min="10" max="100" value="10"></label></li>
+                                        <li class="menu-item btn btn-sm">
+                                            <div id="tui-text-color-picker" class="small">字体颜色</div>
+                                        </li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                                <div class="sub-menu-container" id="filter-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm border input-wrapper small">
+                                            选择遮照图像
+                                            <input type="file" accept="image/*" id="input-mask-image-file">
+                                        </li>
+                                        <li class="menu-item btn btn-sm small" id="btn-apply-mask">应用遮照滤镜</li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                                <div class="sub-menu-container" id="image-filter-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <table>
+                                                <tbody>
+                                                <tr>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-grayscale">Grayscale</label></td>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-invert">Invert</label></td>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-sepia">Sepia</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-sepia2">Sepia2</label></td>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-blur">Blur</label></td>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-sharpen">Sharpen</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="small"><input type="checkbox" id="input-check-emboss">Emboss</label></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-remove-white">RemoveWhite</label><br>
+                                            <label class="small">Threshold<input class="range-narrow" id="input-range-remove-white-threshold" type="range" min="0" value="60" max="255"></label><br>
+                                            <label class="small">Distance<input class="range-narrow" id="input-range-remove-white-distance" type="range" min="0" value="10" max="255"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-brightness">Brightness</label><br>
+                                            <label class="small">Value<input class="range-narrow" id="input-range-brightness-value" type="range" min="-255" value="100" max="255"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-noise">Noise</label><br>
+                                            <label class="small">Value<input class="range-narrow" id="input-range-noise-value" type="range" min="0" value="100" max="1000"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-gradient-transparancy">GradientTransparency</label><br>
+                                            <label class="small">Value<input class="range-narrow" id="input-range-gradient-transparency-value" type="range" min="0" value="100" max="255"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-pixelate">Pixelate</label><br>
+                                            <label class="small">Value<input class="range-narrow" id="input-range-pixelate-value" type="range" min="2" value="4" max="20"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-tint">Tint</label><br>
+                                            <div id="tui-tint-color-picker"></div>
+                                            <label class="small">Opacity<input class="range-narrow" id="input-range-tint-opacity-value" type="range" min="0" value="1" max="1" step="0.1"></label>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-multiply">Multiply</label>
+                                            <div id="tui-multiply-color-picker"></div>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                            <label class="small"><input type="checkbox" id="input-check-blend">Blend</label>
+                                            <div id="tui-blend-color-picker"></div>
+                                            <select name="select-blend-type">
+                                                <option value="add" selected>Add</option>
+                                                <option value="diff">Diff</option>
+                                                <option value="diff">Subtract</option>
+                                                <option value="multiply">Multiply</option>
+                                                <option value="screen">Screen</option>
+                                                <option value="lighten">Lighten</option>
+                                                <option value="darken">Darken</option>
+                                            </select>
+                                        </li>
+                                        <li class="menu-item btn btn-sm align-left-top">
+                                                <label class="small"><input type="checkbox" id="input-check-color-filter">ColorFilter</label><br>
+                                                <label class="small">Threshold<input class="range-narrow" id="input-range-color-filter-value" type="range" min="0" value="45" max="255"></label>
+                                        </li>
+                                        <li class="close"><span>&times;</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="tui-image-editor"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success btn-sm small" id="btn-download">下载</button>
+                            <button type="button" class="btn btn-secondary btn-sm small" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary btn-sm small" id="btn-save">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- End of Main Content -->
@@ -566,54 +797,23 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Transliteration JavaScript-->
-<script src="vendor/transliteration/bundle.umd.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<script src="vendor/dropzone/dropzone.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
+<script type="text/javascript" src="vendor/fabric/fabric.js"></script>
+<script type="text/javascript" src="vendor/tui-code-snippet/tui-code-snippet.min.js"></script>
+<script type="text/javascript" src="vendor/tui-color-picker/tui-color-picker.min.js"></script>
+<script type="text/javascript" src="vendor/file-saver/FileSaver.min.js"></script>
+<script type="text/javascript" src="vendor/tui-image-editor/dist/tui-image-editor.min.js"></script>
+<script type="text/javascript" src="js/features/tui-image-editor-service-basic.js"></script>
 <script type="text/javascript">
-    // Get the template HTML and remove it from the doument
-    var previewNode = document.querySelector("#template");
-    previewNode.id = "";
-    var previewTemplate = previewNode.parentNode.innerHTML;
-    //开始先删除单个文件的布局
-    previewNode.parentNode.removeChild(previewNode);
-
-    var myDropzone = new Dropzone("div#dropzone", { // 指定拖拽区为div#dropzone
-        url: "/upload", // Set the url
-        maxFilesize: 10,
-        thumbnailWidth: 80,
-        thumbnailHeight: 80,
-        parallelUploads: 20,
-        previewTemplate: previewTemplate,
-        autoQueue: true, // 当队列有文件，是否立刻自动上传到服务器
-        previewsContainer: "#previews", // 指定存放文件队列区
-        clickable: ".fileinput-button" // 点击某个按钮或区域后出现选择电脑中本地图片，默认是previewsContainer指定的区域
+    // Load sample image
+    imageEditor.loadImageFromURL('http://e.hiphotos.baidu.com/image/pic/item/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg', 'SampleImage').then(function(sizeValue) {
+        console.log(sizeValue);
+        imageEditor.clearUndoStack();
     });
 
-    myDropzone.on("addedfile", function (file) {
-        console.log(file);
-        // 显示所有文件行
-        document.querySelector("#previews").classList.remove("d-none");
-    });
-    myDropzone.on("error", function (file) {
-        // 上传失败，把删除按钮显示出来
-        file.previewElement.querySelector(".delete").setAttribute("style", "display: block");
-
-    });
-    myDropzone.on("success", function (file, response) {
-        // 上传成功，把编辑按钮显示出来
-        file.previewElement.querySelector(".edit").setAttribute("style", "display: block");
-    });
 </script>
-
-
 </body>
 
 </html>

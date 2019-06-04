@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v8.11.1
+* sweetalert2 v8.11.7
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -413,6 +413,9 @@ var toggle = function toggle(elem, condition, display) {
 
 var isVisible = function isVisible(elem) {
   return !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length));
+};
+var isScrollable = function isScrollable(elem) {
+  return !!(elem.scrollHeight > elem.clientHeight);
 }; // borrowed from https://stackoverflow.com/a/46352119
 
 var hasCssAnimation = function hasCssAnimation(elem) {
@@ -1668,9 +1671,29 @@ var iOSfix = function iOSfix() {
     var offset = document.body.scrollTop;
     document.body.style.top = offset * -1 + 'px';
     addClass(document.body, swalClasses.iosfix);
+    lockBodyScroll();
   }
 };
+
+var lockBodyScroll = function lockBodyScroll() {
+  // #1246
+  var container = getContainer();
+  var preventTouchMove;
+
+  container.ontouchstart = function (e) {
+    preventTouchMove = e.target === container || !isScrollable(container) && e.target.tagName !== 'INPUT' // #1603
+    ;
+  };
+
+  container.ontouchmove = function (e) {
+    if (preventTouchMove) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+};
 /* istanbul ignore next */
+
 
 var undoIOSfix = function undoIOSfix() {
   if (hasClass(document.body, swalClasses.iosfix)) {
@@ -1797,8 +1820,6 @@ function removeBodyClasses() {
 }
 
 function swalCloseEventFinished(popup, container, isToast, onAfterClose) {
-  popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-
   if (hasClass(popup, swalClasses.hide)) {
     removePopupAndResetState(container, isToast, onAfterClose);
   } // Unset WeakMaps so GC will be able to dispose them (#1569)
@@ -1824,7 +1845,11 @@ function close(resolveValue) {
   addClass(popup, swalClasses.hide); // If animation is supported, animate
 
   if (animationEndEvent && hasCssAnimation(popup)) {
-    popup.addEventListener(animationEndEvent, swalCloseEventFinished.bind(null, popup, container, isToast(), onAfterClose));
+    popup.addEventListener(animationEndEvent, function (e) {
+      if (e.target === popup) {
+        swalCloseEventFinished(popup, container, isToast(), onAfterClose);
+      }
+    });
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(container, isToast(), onAfterClose);
@@ -2754,7 +2779,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
-SweetAlert.version = '8.11.1';
+SweetAlert.version = '8.11.7';
 
 var Swal = SweetAlert;
 Swal["default"] = Swal;

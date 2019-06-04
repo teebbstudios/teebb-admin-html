@@ -382,7 +382,7 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   font-size: 0.8em;
 }
 .swal2-popup.swal2-toast .swal2-close {
-  position: initial;
+  position: static;
   width: 0.8em;
   height: 0.8em;
   line-height: 0.8;
@@ -423,6 +423,7 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   right: 0.3125em;
 }
 .swal2-popup.swal2-toast .swal2-actions {
+  flex-basis: auto !important;
   height: auto;
   margin: 0 0.3125em;
 }
@@ -1443,6 +1444,6 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     display: none;
   }
   body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
-    position: initial !important;
+    position: static !important;
   }
 }

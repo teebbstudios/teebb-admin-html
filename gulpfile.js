@@ -102,8 +102,46 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/dropzone'));
 
+    var fabric = gulp.src([
+        './node_modules/fabric/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/fabric'));
+
+    var tuiCodeSnippet = gulp.src([
+        './node_modules/tui-code-snippet/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/tui-code-snippet'));
+
+    var tuiColorPicker = gulp.src([
+        './node_modules/tui-color-picker/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/tui-color-picker'));
+
+    var tuiImageEditor = gulp.src([
+        './node_modules/tui-image-editor/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/tui-image-editor/dist'));
+
+    var tuiImageEditorSvg = gulp.src([
+        './node_modules/tui-image-editor/dist/svg/*',
+    ])
+        .pipe(gulp.dest('./dist/svg'));
+
+    var tuiImageEditorTheme = gulp.src([
+        './node_modules/tui-image-editor/examples/js/**/*',
+        './node_modules/tui-image-editor/examples/css/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/tui-image-editor'));
+
+    var fileSaver = gulp.src([
+        './node_modules/file-saver/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/file-saver'));
+
+
     return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing,
-        sweetalert2, sortableJs, bootstrapSelect, transliteration, dropzone
+        sweetalert2, sortableJs, bootstrapSelect, transliteration, dropzone, fabric, tuiCodeSnippet, tuiColorPicker,
+        fileSaver, tuiImageEditor
         );
 }
 
