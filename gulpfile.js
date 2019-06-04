@@ -128,10 +128,9 @@ function modules() {
         .pipe(gulp.dest('./dist/svg'));
 
     var tuiImageEditorTheme = gulp.src([
-        './node_modules/tui-image-editor/examples/js/**/*',
-        './node_modules/tui-image-editor/examples/css/**/*',
+        './node_modules/tui-image-editor/examples/**',
     ])
-        .pipe(gulp.dest('./vendor/tui-image-editor'));
+        .pipe(gulp.dest('./vendor/tui-image-editor/examples'));
 
     var fileSaver = gulp.src([
         './node_modules/file-saver/dist/**/*',

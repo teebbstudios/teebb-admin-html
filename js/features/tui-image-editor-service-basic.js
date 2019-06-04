@@ -19,6 +19,7 @@ var $btnDownload = $('#btn-download');
 
 var $btnUndo = $('#btn-undo');
 var $btnRedo = $('#btn-redo');
+var $btnReset = $('#btn-reset');
 
 var $btnClearObjects = $('#btn-clear-objects');
 var $btnRemoveActiveObject = $('#btn-remove-active-object');
@@ -286,6 +287,16 @@ function applyOrRemoveFilter(applying, type, options) {
     }
 }
 
+function reset(){
+    imageEditor.undo().then(function () {
+        if(!imageEditor.isEmptyUndoStack()){
+            reset();
+        }
+    },function () {
+    });
+    $btnReset.addClass("disabled");
+}
+
 // Attach image editor custom events
 imageEditor.on({
     objectAdded: function(objectProps) {
@@ -294,8 +305,10 @@ imageEditor.on({
     undoStackChanged: function(length) {
         if (length) {
             $btnUndo.removeClass('disabled');
+            $btnReset.removeClass('disabled');
         } else {
             $btnUndo.addClass('disabled');
+            $btnReset.addClass('disabled');
         }
         resizeEditor();
     },
@@ -358,7 +371,11 @@ $btnUndo.on('click', function() {
     $displayingSubMenu.hide();
 
     if (!$(this).hasClass('disabled')) {
-        imageEditor.undo();
+        imageEditor.undo().then(function () {
+
+        },function () {
+
+        });
     }
 });
 
@@ -366,7 +383,19 @@ $btnRedo.on('click', function() {
     $displayingSubMenu.hide();
 
     if (!$(this).hasClass('disabled')) {
-        imageEditor.redo();
+        imageEditor.redo().then(function () {
+            
+        },function () {
+            
+        });
+    }
+});
+
+$btnReset.on('click', function() {
+    $displayingSubMenu.hide();
+
+    if (!$(this).hasClass('disabled')) {
+        reset();
     }
 });
 
@@ -408,7 +437,6 @@ $btnApplyCrop.on('click', function() {
         imageEditor.stopDrawingMode();
         resizeEditor();
     });
-    $displayingSubMenu.hide();
 });
 
 $btnCancelCrop.on('click', function() {
