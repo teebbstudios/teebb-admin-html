@@ -17,6 +17,8 @@ var $btnsActivatable = $btns.filter('.activatable');
 var $inputImage = $('#input-image-file');
 var $btnDownload = $('#btn-download');
 
+var $btnCancel = $('#btn-cancel');
+
 var $btnUndo = $('#btn-undo');
 var $btnRedo = $('#btn-redo');
 var $btnReset = $('#btn-reset');
@@ -397,6 +399,10 @@ $btnReset.on('click', function() {
     if (!$(this).hasClass('disabled')) {
         reset();
     }
+});
+
+$btnCancel.on('click', function () {
+    reset();
 });
 
 $btnClearObjects.on('click', function() {
