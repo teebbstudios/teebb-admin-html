@@ -589,6 +589,7 @@
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-rotation" title="旋转"><i class="fas fa-circle-notch"></i></li>
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-draw-line" title="画线"><i class="fas fa-pencil-alt"></i></li>
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-draw-shape" title="形状"><i class="fas fa-shapes"></i></li>
+                                    <li class="menu-item btn btn-dark btn-sm" id="btn-add-icon" title="图标"><i class="fas fa-star"></i></li>
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-text" title="文字"><i class="fas fa-italic"></i></li>
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-mask-filter" title="遮照"><i class="fas fa-mask"></i></li>
                                     <li class="menu-item btn btn-dark btn-sm" id="btn-image-filter" title="滤镜"><i class="fas fa-paint-roller"></i></li>
@@ -604,7 +605,7 @@
                                         <li class="menu-item btn btn-sm btn-secondary" id="btn-flip-x" title="左右翻转"><i class="fas fa-arrows-alt-h"></i></li>
                                         <li class="menu-item btn btn-sm btn-secondary" id="btn-flip-y" title="上下翻转"><i class="fas fa-arrows-alt-v pl-1 pr-1"></i></li>
                                         <li class="menu-item btn btn-sm btn-secondary" id="btn-reset-flip" title="恢复"><i class="fas fa-sync"></i></li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                                 <div class="sub-menu-container" id="rotation-sub-menu">
@@ -617,7 +618,7 @@
                                                 <input id="input-rotation-range" type="range" min="-360" value="0" max="360">
                                             </div>
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                                 <div class="sub-menu-container menu" id="draw-line-sub-menu">
@@ -647,7 +648,7 @@
                                                 <input id="input-brush-width-range" type="range" min="5" max="30" value="12">
                                             </div>
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                                 <div class="sub-menu-container" id="draw-shape-sub-menu">
@@ -690,10 +691,32 @@
                                                 <input id="input-stroke-width-range" type="range" min="0" max="300" value="12">
                                             </div>
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
-
+                                <div class="sub-menu-container" id="icon-sub-menu">
+                                    <ul class="menu">
+                                        <li class="menu-item btn btn-sm">
+                                            <div id="tui-icon-color-picker" class="small">图标颜色</div>
+                                        </li>
+                                        <!--<li class="menu-item border btn btn-sm" id="btn-register-icon">选择图标</li>-->
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="arrow">→</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="check">✓</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="cancel">✕</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="star">★</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="heart">♥</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="cut">✄</li>
+                                        <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="bubble">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2"
+                                                 baseProfile="tiny" x="0px" y="0px" width="14px" height="14px"
+                                                 viewBox="0 30 230 191" xml:space="preserve">
+                                                <path d="M200.401,10.445H40.73c-16.534,0-29.59,10.725-29.59,25.148v95.762c0,14.423,13.056,27.09,29.59,27.09h10.41V201  l69.425-42.555h79.835c16.534,0,29.739-12.667,29.739-27.09V35.593C230.14,21.17,216.934,10.445,200.401,10.445z"/>
+                                            </svg>
+                                        </li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
+                                    </ul>
+                                </div>
                                 <div class="sub-menu-container" id="text-sub-menu">
                                     <ul class="menu">
                                         <li class="menu-item btn btn-sm">
@@ -715,7 +738,7 @@
                                                 <input id="input-font-size-range" type="range" min="10" max="100" value="10">
                                             </div>
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                                 <div class="sub-menu-container" id="filter-sub-menu">
@@ -731,7 +754,7 @@
                                                 <span class="small mr-2">应用遮照滤镜</span>
                                             </div>
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                                 <div class="sub-menu-container" id="image-filter-sub-menu">
@@ -821,7 +844,7 @@
                                             </div>
                                         </li>
                                         <li class="menu-item btn btn-sm align-left-top">
-                                            <div class="form-check text-left form-inline">
+                                            <div class="text-left form-inline">
                                                 <input class="form-check-input small" type="checkbox" id="input-check-brightness">
                                                 <label class="form-check-label small mr-2" for="input-check-brightness">
                                                     调整亮度
@@ -829,7 +852,7 @@
                                                 <label class="small mr-2 sr-only" for="input-range-brightness-value">数值</label>
                                                 <input class="range-narrow" id="input-range-brightness-value" type="range" min="-255" value="100" max="255">
                                             </div>
-                                            <div class="form-check text-left form-inline">
+                                            <div class="text-left form-inline">
                                                 <input class="form-check-input small" type="checkbox" id="input-check-noise">
                                                 <label class="form-check-label small mr-2" for="input-check-noise">
                                                     调整噪点
@@ -837,7 +860,7 @@
                                                 <label class="small mr-2 sr-only" for="input-range-noise-value">数值</label>
                                                 <input class="range-narrow" id="input-range-noise-value" type="range" min="0" value="100" max="1000">
                                             </div>
-                                            <div class="form-check text-left form-inline">
+                                            <div class="text-left form-inline">
                                                 <input class="form-check-input small" type="checkbox" id="input-check-gradient-transparancy">
                                                 <label class="form-check-label small mr-2" for="input-check-gradient-transparancy">
                                                     渐变透明
@@ -845,7 +868,7 @@
                                                 <label class="small mr-2 sr-only" for="input-range-gradient-transparency-value">数值</label>
                                                 <input class="range-narrow" id="input-range-gradient-transparency-value" type="range" min="0" value="100" max="255">
                                             </div>
-                                            <div class="form-check text-left form-inline">
+                                            <div class="text-left form-inline">
                                                 <input class="form-check-input small" type="checkbox" id="input-check-pixelate">
                                                 <label class="form-check-label small mr-2" for="input-check-pixelate">
                                                     使像素化
@@ -853,7 +876,7 @@
                                                 <label class="small mr-2 sr-only" for="input-range-pixelate-value">数值</label>
                                                 <input class="range-narrow" id="input-range-pixelate-value" type="range" min="2" value="4" max="20">
                                             </div>
-                                            <div class="form-check text-left form-inline">
+                                            <div class="text-left form-inline">
                                                 <input class="form-check-input small" type="checkbox" id="input-check-color-filter">
                                                 <label class="form-check-label small mr-2" for="input-check-color-filter">
                                                     颜色过滤
@@ -902,7 +925,7 @@
                                             <div id="tui-blend-color-picker"></div>
 
                                         </li>
-                                        <li class="close"><span>&times;</span></li>
+                                        <li class="menu-item btn btn-sm menu-close" title="关闭"><i class="fas fa-times-circle"></i></li>
                                     </ul>
                                 </div>
                             </div>
