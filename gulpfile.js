@@ -122,12 +122,7 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/tui-image-editor/dist'));
 
-    var tuiImageEditorSvg = gulp.src([
-        './node_modules/tui-image-editor/dist/svg/*',
-    ])
-        .pipe(gulp.dest('./dist/svg'));
-
-    var tuiImageEditorTheme = gulp.src([
+    var tuiImageEditorExamples = gulp.src([
         './node_modules/tui-image-editor/examples/**',
     ])
         .pipe(gulp.dest('./vendor/tui-image-editor/examples'));
@@ -137,10 +132,15 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/file-saver'));
 
+    var videoJs = gulp.src([
+        './node_modules/video.js/dist/**/*',
+    ])
+        .pipe(gulp.dest('./vendor/video.js'));
+
 
     return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing,
         sweetalert2, sortableJs, bootstrapSelect, transliteration, dropzone, fabric, tuiCodeSnippet, tuiColorPicker,
-        fileSaver, tuiImageEditor
+        fileSaver, tuiImageEditor, tuiImageEditorExamples, videoJs,
         );
 }
 

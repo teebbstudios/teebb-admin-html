@@ -21,10 +21,7 @@ a {
     vertical-align: middle;
   }
 }
-.rect-80 {
-  width: 80px;
-  font-size: 80px;
-}
+
 
 // Main page wrapper
 #wrapper {
@@ -76,4 +73,17 @@ a {
   height: calc(1em + .5rem + 2px);
   padding: .15rem .5rem;
   border-radius: .2rem;
+}
+
+.rect-80 {
+  width: 80px;
+  font-size: 80px;
+}
+
+.max-height-200 {
+  max-height: 200px;
+}
+
+.border-bottom-gray-100{
+  border-bottom-color: #f8f9fc!important;
 }
