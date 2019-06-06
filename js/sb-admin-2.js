@@ -200,4 +200,21 @@
     $(document).ready(function () {
         $('.bootstrap-select .bs-searchbox input').addClass('form-control-sm');
     });
+
+    //编辑菜单项页面 左侧添加菜单项 tab 样式修改
+    $('.js-add-menu-item a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var $newActiveTab = $(e.target); // newly activated tab
+        var $previousActiveTab = $(e.relatedTarget); // previous active tab
+
+        $newActiveTab.addClass('bg-gray-100 border-bottom-gray-100');
+
+        $previousActiveTab.removeClass('bg-gray-100 border-bottom-gray-100');
+    });
+
+    //编辑菜单项页面，展开收缩菜单项，点击事件
+    $('.dd-item .accordion-arrow').on('click', function(e){
+        var $collapse = $(e.target).closest('.dd-item').find('.collapse');
+        $collapse.collapse('toggle');
+    });
+
 })(jQuery); // End of use strict

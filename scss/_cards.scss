@@ -24,7 +24,7 @@
       font-weight: 900;
       content: '\f107';
       font-family: 'Font Awesome 5 Free';
-      color: $gray-400;
+      color: $gray-600;
     }
     &.collapsed {
       border-radius: $card-border-radius;
@@ -33,6 +33,16 @@
       }
     }
   }
+
+  .accordion-arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    height: 51px;
+    cursor: pointer;
+  }
+
   .card-body{
     font-size: 0.85rem;
     table {

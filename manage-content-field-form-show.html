@@ -634,6 +634,7 @@
     var sortable = new Sortable(el, {
         handle: '.js-sortable', // handle's class
         animation: 150,
+        ghostClass: 'bg-gray-200',
         // Element dragging ended
         onEnd: function (/**Event*/evt) {
             var $weightInputs = $(el).find('input[type=number].input-field-weight');

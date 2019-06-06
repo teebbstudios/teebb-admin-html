@@ -87,3 +87,13 @@ a {
 .border-bottom-gray-100{
   border-bottom-color: #f8f9fc!important;
 }
+
+.nested-sortable {
+  .list-group-item{
+    margin-bottom: 0.5rem;
+    background-color: #f8f9fc!important;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+  }
+}

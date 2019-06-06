@@ -137,10 +137,15 @@ function modules() {
     ])
         .pipe(gulp.dest('./vendor/video.js'));
 
+    var nestable = gulp.src([
+        './node_modules/nestable/*',
+    ])
+        .pipe(gulp.dest('./vendor/nestable'));
+
 
     return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing,
         sweetalert2, sortableJs, bootstrapSelect, transliteration, dropzone, fabric, tuiCodeSnippet, tuiColorPicker,
-        fileSaver, tuiImageEditor, tuiImageEditorExamples, videoJs,
+        fileSaver, tuiImageEditor, tuiImageEditorExamples, videoJs, nestable,
         );
 }
 
