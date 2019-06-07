@@ -9,13 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>编辑单条评论</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
+    <!-- VideoJs -->
+    <link href="vendor/video.js/video-js.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -256,7 +258,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">编辑类型</li>
+                        <li class="breadcrumb-item active" aria-current="page">添加类型</li>
                     </ol>
                 </nav>
 
@@ -461,93 +463,113 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">编辑类型</h1>
+                    <h1 class="h3 mb-0 text-gray-800">编辑评论</h1>
                 </div>
 
-                <!-- FULL WIDTH Content -->
-                <div class="full-width-wrapper">
+                <!--编辑 页面布局 左8 右4-->
+                <div class="row">
 
-                    <!-- 提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">内容类型由不同的内容字段组成，字段可以是图像、文本、数字、标签或者其他。任意搭配字段生成您的内容类型。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="card shadow mb-3">
+                            <div class="card-header d-sm-flex align-items-center justify-content-between  py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">作者</h6>
+                            </div>
 
+                            <div class="card-body">
 
-                    <!-- 编辑类型 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header d-flex flex-row align-items-center justify-content-between">
-
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active small" href="edit-content-type.html">编辑类型</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-type-field.html">管理字段</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-field-form-show.html">管理字段显示</a>
-                                </li>
-                            </ul>
-
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                     aria-labelledby="dropdownContentTypesMenuLink">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>管理类型</a>
+                                <div class="mb-3">
+                                    <div class="form-group row">
+                                        <label for="author_name" class="col-md-2 col-form-label text-nowrap">姓名</label>
+                                        <div class="col-md-10">
+                                            <input id="author_name" type="text" class="form-control form-control-sm w-100" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="author_email" class="col-md-2 col-form-label text-nowrap">电子邮件</label>
+                                        <div class="col-md-10">
+                                            <input id="author_email" type="email" class="form-control form-control-sm w-100" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="author_url" class="col-md-2 col-form-label text-nowrap">URL</label>
+                                        <div class="col-md-10">
+                                            <input id="author_url" type="url" class="form-control form-control-sm w-100" value="">
+                                        </div>
+                                    </div>
                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="card shadow mb-3">
+                            <div class="card-header d-sm-flex align-items-center justify-content-between  py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">评论内容</h6>
                             </div>
 
+                            <div class="card-body">
+
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label for="comment_body">评论</label>
+                                        <textarea id="comment_body" class="form-control form-control-sm w-100" value=""></textarea>
+                                    </div>
+
+                                    Todo: 其他字段依次显示
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="card-body">
 
-                            <div class="edit-content-type-form">
-                                <form action="#" method="post">
-                                    <div class="form-row">
-                                        <div class="col-12 col-md-6 mb-3">
-                                            <label for="content_type_name">名称<sup class="text-danger">*</sup></label>
-                                            <input type="text" id="content_type_name" name="" value="文章" class="form-control form-control-sm" required="required">
-                                            <div class="small mt-1 text-muted">此内容类型的名称。此文本将显示于添加内容页面的列表中。此名称必须唯一。</div>
-                                        </div>
-
-                                        <div class="col-12 mb-3 form-inline form-alias">
-                                            <label>机读名称<sup class="text-danger">*</sup></label>
-                                            <div class="ml-2 text-alias-wrapper mb-2 mb-sm-0">
-                                                <span class="text-alias">article</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 mb-3">
-                                            <label for="content_type_description">描述</label>
-                                            <textarea id="content_type_description" name="" class="content-type-description form-control form-control-sm w-100">基本的文章类型，包含标题、Body、标签和图像字段。</textarea>
-                                            <div class="small mt-1 text-muted">简短的描述该内容类型的帮助信息，此信息只在内容类型列表页面显示。</div>
-                                        </div>
-
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">评论状态</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="comment_status" id="radio_check" value="option" checked>
+                                        <label class="form-check-label" for="radio_check">
+                                            批准
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="comment_status" id="radio_shen" value="option">
+                                        <label class="form-check-label" for="radio_shen">
+                                            待审
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="comment_status" id="radio_trash" value="option">
+                                        <label class="form-check-label text-danger" for="radio_trash">
+                                            垃圾评论
+                                        </label>
                                     </div>
 
-                                    <div class="form-row">
-                                        <div class="col-12">
-                                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
-                                            <span class="icon text-white-50">
-                                              <i class="fas fa-check"></i>
-                                            </span>
-                                                <span class="text">保存此类型</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
+
+                                <div class="form-group comment-time">
+                                    <label for="comment_time"><i class="fas fa-calendar-alt mr-1"></i>提交于</label>
+                                    <input id="comment_time" disabled type="datetime-local" class="form-control form-control-sm w-100" value="">
+                                    <button id="edit_comment_time_btn" class="btn btn-link d-inline p-0" type="button">
+                                        <small>编辑</small>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                            <div class="card-footer d-sm-flex align-items-center justify-content-between py-3">
+                                <button class="btn btn-link text-danger d-inline p-0" type="button">
+                                    <small>移至回收站</small>
+                                </button>
+                                <button class="btn btn-sm btn-primary shadow-sm d-inline" type="button">
+                                    更新
+                                </button>
                             </div>
                         </div>
                     </div>
 
                 </div>
-
             </div>
             <!-- /.container-fluid -->
 
@@ -582,12 +604,9 @@
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Transliteration JavaScript-->
-<script src="vendor/transliteration/bundle.umd.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+<!-- VideoJs -->
+<script type="text/javascript" src="vendor/video.js/video.min.js"></script>
+<script type="text/javascript" src="vendor/video.js/lang/zh-CN.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>

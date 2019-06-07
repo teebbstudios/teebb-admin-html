@@ -217,4 +217,21 @@
         $collapse.collapse('toggle');
     });
 
+    //评论列表页评论操作列表显示
+    $('td.js-comment-td').hover(function (e) {
+        var $tdEl = $(e.target);
+        $tdEl.find('.comment-option').css('left','0px');
+    },function (e) {
+        var $tdEl = $(e.target);
+        $tdEl.find('.comment-option').css('left','-9999em');
+    });
+
+    //编辑评论页面修改提交时间事件
+    $('button#edit_comment_time_btn').on('click',function (e) {
+        var $timeInput = $(e.target).closest('.comment-time').find('input#comment_time');
+        console.log($timeInput);
+        $timeInput.removeAttr('disabled');
+        $(e.target).hide();
+    });
+
 })(jQuery); // End of use strict

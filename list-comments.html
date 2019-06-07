@@ -9,12 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>评论列表</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
+
+    <!-- Sweetalert2 styles-->
+    <link href="vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -82,7 +85,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">类型管理:</h6>
-                    <a class="collapse-item" href="utilities-color.html">添加类型</a>
+                    <a class="collapse-item" href="add-content-type.html">添加类型</a>
                     <a class="collapse-item" href="utilities-border.html">管理类型</a>
                 </div>
             </div>
@@ -256,7 +259,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">编辑类型</li>
+                        <li class="breadcrumb-item active" aria-current="page">管理内容</li>
                     </ol>
                 </nav>
 
@@ -461,88 +464,243 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">编辑类型</h1>
+                    <h1 class="h3 mb-0 text-gray-800">评论列表</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
 
-                    <!-- 提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">内容类型由不同的内容字段组成，字段可以是图像、文本、数字、标签或者其他。任意搭配字段生成您的内容类型。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-
-                    <!-- 编辑类型 -->
+                    <!--过滤card-->
                     <div class="card shadow mb-4">
-                        <div class="card-header d-flex flex-row align-items-center justify-content-between">
-
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active small" href="edit-content-type.html">编辑类型</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-type-field.html">管理字段</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-field-form-show.html">管理字段显示</a>
-                                </li>
-                            </ul>
-
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                     aria-labelledby="dropdownContentTypesMenuLink">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>管理类型</a>
-                                </div>
-                            </div>
-
-                        </div>
                         <div class="card-body">
 
-                            <div class="edit-content-type-form">
+                            <div class="filter">
                                 <form action="#" method="post">
-                                    <div class="form-row">
-                                        <div class="col-12 col-md-6 mb-3">
-                                            <label for="content_type_name">名称<sup class="text-danger">*</sup></label>
-                                            <input type="text" id="content_type_name" name="" value="文章" class="form-control form-control-sm" required="required">
-                                            <div class="small mt-1 text-muted">此内容类型的名称。此文本将显示于添加内容页面的列表中。此名称必须唯一。</div>
+                                    <div class="form-row align-items-center">
+                                        <div class="col-md-6 mb-2 mb-md-0">
+                                            <label class="sr-only" for="filter_files_title">搜索评论</label>
+                                            <input type="text" class="form-control form-control-sm" id="filter_files_title" placeholder="搜索评论">
                                         </div>
-
-                                        <div class="col-12 mb-3 form-inline form-alias">
-                                            <label>机读名称<sup class="text-danger">*</sup></label>
-                                            <div class="ml-2 text-alias-wrapper mb-2 mb-sm-0">
-                                                <span class="text-alias">article</span>
-                                            </div>
+                                        <div class="col-md-2 mb-2 mb-md-0">
+                                            <label class="sr-only" for="filter_files_date">日期</label>
+                                            <select id="filter_files_date" class="form-control form-control-sm">
+                                                <option>全部日期</option>
+                                                <option>2019年五月</option>
+                                                <option>2019年四月</option>
+                                            </select>
                                         </div>
-
-                                        <div class="col-12 mb-3">
-                                            <label for="content_type_description">描述</label>
-                                            <textarea id="content_type_description" name="" class="content-type-description form-control form-control-sm w-100">基本的文章类型，包含标题、Body、标签和图像字段。</textarea>
-                                            <div class="small mt-1 text-muted">简短的描述该内容类型的帮助信息，此信息只在内容类型列表页面显示。</div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="col-12">
-                                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
-                                            <span class="icon text-white-50">
-                                              <i class="fas fa-check"></i>
-                                            </span>
-                                                <span class="text">保存此类型</span>
-                                            </a>
+                                        <div class="col-md-2 mb-2 mb-md-0">
+                                            <button class="btn btn-secondary btn-icon-split btn-sm">
+                                                <span class="icon text-white-50">
+                                                  <i class="fas fa-filter"></i>
+                                                </span>
+                                                <span class="text">过滤</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 管理文件 -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">文件列表</h6>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownNewContentsMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                     aria-labelledby="dropdownNewContentsMenuLink">
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fa fa-upload text-gray-500 pr-2"></i>上传文件</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="list mt-3">
+                                <div class="h-submenu mb-2">
+                                    <ul class="list-group list-group-horizontal">
+                                        <li class="list-group-item">
+                                            <a class="active" href="">全部(123)</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="" href="">我的(20)</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="" href="">待审(100)</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="" href="">已批准(100)</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="" href="">垃圾(100)</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="" href="">回收站(100)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <form action="#" method="post">
+                                    <!--内容批量操作-->
+                                    <div class="form-row">
+                                        <div class="col-6 col-sm-3 pr-2 mb-3">
+                                            <label for="select_bat_option_top" class="sr-only">批量操作</label>
+                                            <select id="select_bat_option_top" class="form-control form-control-sm" name="">
+                                                <option selected>批量操作</option>
+                                                <option>驳回</option>
+                                                <option>批准</option>
+                                                <option>标记会垃圾评论</option>
+                                                <option>移至回收站</option>
+                                                <option>永久删除</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-sm-3 pr-2 mb-3">
+                                            <button class="btn btn-secondary btn-icon-split btn-sm">
+                                                <span class="icon text-white-50">
+                                                  <i class="fas fa-check"></i>
+                                                </span>
+                                                <span class="text">应用</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="col-12 col-sm-6 form-inline mb-3 justify-content-sm-end">
+                                            <label for="select_page_limit_top">共123个 每页显示</label>
+                                            <select id="select_page_limit_top" class="form-control form-control-sm select-page-limit" name="">
+                                                <option selected>15</option>
+                                                <option value="1">25</option>
+                                                <option value="2">50</option>
+                                                <option value="2">100</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--内容列表-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="dataTable">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <input type="checkbox" class="form-check check-all" title="选择所有行">
+                                                </th>
+                                                <th scope="col">作者</th>
+                                                <th scope="col">评论</th>
+                                                <th scope="col" class="d-none d-sm-table-cell text-nowrap">回复至</th>
+                                                <th scope="col" class="d-none d-sm-table-cell text-nowrap">提交于</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td scope="row" class="align-top">
+                                                    <input type="checkbox" class="form-check" value="">
+                                                </td>
+                                                <td class="align-top">
+                                                    <div class="author">
+                                                        <strong>
+                                                            <img src="img/undraw_posting_photo.svg" class="img-profile rounded-circle img-thumbnail" alt="...">
+                                                            admin
+                                                        </strong>
+                                                        <span>59获准</span>
+                                                        <div class="author-info">
+                                                            <a href="#">admin@quanweiwei.cn</a>
+                                                            <br>
+                                                            <a href="#">123.12.12.123</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="js-comment-td align-top">
+                                                    <div class="comment-content">
+                                                        <p class="comment-body">想法太多，现在很多女孩总是觉得自己能遇到更好的，所以一路上总是有备胎，而自己也成为一个个备胎的过客。</p>
+                                                        <p class="comment-field"></p>
+                                                    </div>
+                                                    <div class="comment-option h-submenu mb-2">
+                                                        <ul class="list-group list-group-horizontal">
+                                                            <li class="option-item">
+                                                                <a class="text-warning" href="">驳回</a>
+                                                            </li>
+                                                            <li class="option-item">
+                                                                <a class="" href="">批准</a>
+                                                            </li>
+                                                            <li class="option-item">
+                                                                <a class="" href="">编辑</a>
+                                                            </li>
+                                                            <li class="option-item">
+                                                                <a class="text-danger" href="">垃圾评论</a>
+                                                            </li>
+                                                            <li class="option-item">
+                                                                <a class="text-danger" href="">移至回收站</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell align-top">
+                                                    <a class="font-weight-bold" href="#">这是一个内容的标题这是一个内容的标题</a>
+                                                    <br>
+                                                    <a class="small" href="#">查看内容</a>
+                                                    <div class="comment-num"><a href="#comment"><i class="fas fa-comment-alt"></i> 40</a></div>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell align-top">
+                                                    <span class="">2019-05-21 12:21:21</span>
+                                                </td>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!--内容批量操作-->
+                                    <div class="content-bat-option form-row">
+                                        <div class="col-6 col-sm-3 pr-2 mb-3">
+                                            <label for="select_bat_option_bottom" class="sr-only">批量操作</label>
+                                            <select id="select_bat_option_bottom" class="form-control form-control-sm" name="">
+                                                <option selected>批量操作</option>
+                                                <option>永久删除</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-sm-3 pr-2 mb-3">
+                                            <button class="btn btn-secondary btn-icon-split btn-sm">
+                                                <span class="icon text-white-50">
+                                                  <i class="fas fa-check"></i>
+                                                </span>
+                                                <span class="text">应用</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="col-12 col-sm-6 form-inline mb-3 justify-content-sm-end">
+                                            <label for="select_page_limit_bottom">共123个 每页显示</label>
+                                            <select id="select_page_limit_bottom" class="form-control form-control-sm select-page-limit" name="">
+                                                <option selected>15</option>
+                                                <option value="1">25</option>
+                                                <option value="2">50</option>
+                                                <option value="2">100</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination justify-content-end">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1">上一页</a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">下一页</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </form>
+
+                            </div>
+
                         </div>
                     </div>
 
@@ -583,15 +741,14 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Transliteration JavaScript-->
-<script src="vendor/transliteration/bundle.umd.min.js"></script>
-
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
 
+<!-- Sweetalert2 Javascript-->
+<script src="vendor/sweetalert2/sweetalert2.all.min.js"></script>
+
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 
 </body>
 

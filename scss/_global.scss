@@ -13,6 +13,9 @@ a {
   &:focus {
     outline: none;
   }
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .table {
@@ -78,6 +81,18 @@ a {
 .rect-80 {
   width: 80px;
   font-size: 80px;
+}
+
+.rect-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.author {
+  img{
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .max-height-200 {

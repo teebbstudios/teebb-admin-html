@@ -50,5 +50,35 @@
         cursor: move;
       }
     }
+    .comment-option{
+      position: relative;
+      left: -9999em;
+    }
+    .h-submenu {
+      .option-item {
+        list-style: none;
+        margin-right: 0.5rem;
+      }
+      .list-group-item {
+        border: none;
+        padding: 0;
+        .active {
+          font-weight: bolder;
+          color: $dark;
+        }
+        &::after {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          font-weight: 600;
+          color: $gray-600;
+          content: '|';
+        }
+        &:nth-last-child(1){
+          &:after{
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

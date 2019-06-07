@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>添加评论类型</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -255,8 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">编辑类型</li>
+                        <li class="breadcrumb-item"><a href="#">评论类型</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">添加评论类型</li>
                     </ol>
                 </nav>
 
@@ -461,38 +461,16 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">编辑类型</h1>
+                    <h1 class="h3 mb-0 text-gray-800">添加评论类型</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
 
-                    <!-- 提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">内容类型由不同的内容字段组成，字段可以是图像、文本、数字、标签或者其他。任意搭配字段生成您的内容类型。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-
-                    <!-- 编辑类型 -->
+                    <!-- 添加类型 -->
                     <div class="card shadow mb-4">
-                        <div class="card-header d-flex flex-row align-items-center justify-content-between">
-
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active small" href="edit-content-type.html">编辑类型</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-type-field.html">管理字段</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link small" href="manage-content-field-form-show.html">管理字段显示</a>
-                                </li>
-                            </ul>
-
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">添加评论类型</h6>
                             <div class="dropdown no-arrow">
                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -500,40 +478,42 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                      aria-labelledby="dropdownContentTypesMenuLink">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>管理类型</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>管理评论类型</a>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-body">
-
-                            <div class="edit-content-type-form">
+                            <div class="create-type-form">
                                 <form action="#" method="post">
                                     <div class="form-row">
                                         <div class="col-12 col-md-6 mb-3">
-                                            <label for="content_type_name">名称<sup class="text-danger">*</sup></label>
-                                            <input type="text" id="content_type_name" name="" value="文章" class="form-control form-control-sm" required="required">
-                                            <div class="small mt-1 text-muted">此内容类型的名称。此文本将显示于添加内容页面的列表中。此名称必须唯一。</div>
+                                            <label for="comment_type_name">名称<sup class="text-danger">*</sup></label>
+                                            <input type="text" id="comment_type_name" name="" class="transliterate form-control form-control-sm" required="required">
+                                            <div class="small mt-1 text-muted">此评论类型的名称。此文本将显示于评论类型列表中。此名称必须唯一。</div>
                                         </div>
-
-                                        <div class="col-12 mb-3 form-inline form-alias">
-                                            <label>机读名称<sup class="text-danger">*</sup></label>
+                                        <div class="col-12 mb-3 form-inline form-alias d-none">
+                                            <label for="comment_type_alias">机读名称<sup class="text-danger">*</sup></label>
                                             <div class="ml-2 text-alias-wrapper mb-2 mb-sm-0">
-                                                <span class="text-alias">article</span>
+                                                <span class="text-alias"></span>
+                                                <a class="js-modify-alias badge badge-secondary ml-2" href="#">编辑</a>
                                             </div>
+                                            <div class="input-alias-wrapper d-none">
+                                                <input id="comment_type_alias" type="hidden" name="" class="input-alias form-control form-control-sm" required="required">
+                                            </div>
+                                            <div class="small mt-1 text-muted d-none">唯一的机读内容类型名字。这个名字必须只能包含小写字母，数字。</div>
                                         </div>
 
                                         <div class="col-12 mb-3">
-                                            <label for="content_type_description">描述</label>
-                                            <textarea id="content_type_description" name="" class="content-type-description form-control form-control-sm w-100">基本的文章类型，包含标题、Body、标签和图像字段。</textarea>
-                                            <div class="small mt-1 text-muted">简短的描述该内容类型的帮助信息，此信息只在内容类型列表页面显示。</div>
+                                            <label for="comment_type_description">描述</label>
+                                            <textarea id="comment_type_description" name="" class="content-type-description form-control form-control-sm w-100"></textarea>
+                                            <div class="small mt-1 text-muted">简短的描述该评论类型的帮助信息，此信息只在评论类型列表页面显示。</div>
                                         </div>
 
                                     </div>
 
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
+                                            <a href="list-comment-types.html" class="btn btn-primary btn-sm btn-icon-split">
                                             <span class="icon text-white-50">
                                               <i class="fas fa-check"></i>
                                             </span>
