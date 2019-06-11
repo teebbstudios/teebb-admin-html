@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>文本格式设置</title>
+    <title>SMTP设置</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -255,8 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">系统</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">文本格式设置</li>
+                        <li class="breadcrumb-item"><a href="#">内容</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">添加类型</li>
                     </ol>
                 </nav>
 
@@ -461,90 +461,73 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">文本格式设置</h1>
-
+                    <h1 class="h3 mb-0 text-gray-800">SMTP邮件设置</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
-                    <!-- 添加提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">文本格式用于过滤已格式化类型的内容字段。文本格式将按照此页定义的顺序出现在内容编辑页面。用户可用的第一个格式将被视为已选择默认值。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
+                    <!-- SMTP邮件设置 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">文本格式列表</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">SMTP设置</h6>
                         </div>
                         <div class="card-body">
-                            <a href="add-text-format.html" class="d-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加文本格式</a>
 
-                            <div class="table-responsive mt-3">
-                                <form action="#" method="post">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">名称</th>
-                                                <th scope="col">角色</th>
-                                                <th scope="col">操作</th>
-                                            </tr>
-                                        </thead>
+                            <div class="form-group">
+                                <label for="smtp_account" class="font-weight-bolder">发送方电邮地址</label>
+                                <input type="email" id="smtp_account" class="form-control form-control-sm col-md-6" name="">
+                                <div class="text-muted small">这是所有发送出去的电邮注明的发送方电邮地址。为了防止发出的邮件被判为垃圾邮件，请使用站点电子邮件地址。</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="smtp_sender_name" class="font-weight-bolder">发送方名称</label>
+                                <input type="text" id="smtp_sender_name" class="form-control form-control-sm col-md-6" name="">
+                                <div class="text-muted small">默认使用站点名称：</div>
+                            </div>
 
-                                        <tbody id="js-sortable-tbody">
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
 
-                                                </td>
-                                            </tr>
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+                            <div class="form-group">
+                                <label for="smtp_server" class="font-weight-bolder">SMTP(邮件传输)服务器设置</label>
+                                <input type="text" id="smtp_server" class="form-control form-control-sm col-md-6" name="">
+                                <div class="text-muted small">这是你发信的SMTP服务器地址。格式如“smtp.163.com”</div>
+                            </div>
 
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                            <div class="form-group">
+                                <label for="smtp_port" class="font-weight-bolder">SMTP(邮件传输)服务端口</label>
+                                <input type="number" id="smtp_port" class="form-control form-control-sm col-md-6" name="">
+                                <div class="text-muted small">
+                                    普通smtp默认端口为 25。具体端口数据请查看您的smtp服务器相关说明。
+                                </div>
+                            </div>
 
-                                    </table>
+                            <div class="form-group">
+                                <label for="smtp_encrypt" class="font-weight-bolder">使用加密协议</label>
+                                <select id="smtp_encrypt" class="form-control form-control-sm col-md-3">
+                                    <option value="default">不使用加密协议</option>
+                                    <option value="tls">使用TLS加密协议</option>
+                                    <option value="ssl">使用SSL加密协议</option>
+                                </select>
+                                <div class="text-muted small">
+                                    这允许SMTP服务器使用相应加密通讯进行连接。
+                                </div>
+                            </div>
 
-                                </form>
+                            <div class="form-group">
+                                <label for="send_test_email" class="font-weight-bolder">发送测试邮件</label>
+                                <input type="email" id="send_test_email" class="form-control form-control-sm col-md-6" name="">
+                                <div class="text-muted small">
+                                    如果需要发送测试邮件请填写此项，否则留空。
+                                </div>
+                            </div>
 
-                                <div class="form-row">
-                                    <div class="col-12">
-                                        <button class="btn btn-primary btn-sm btn-icon-split">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-sm btn-icon-split">
                                             <span class="icon text-white-50">
                                               <i class="fas fa-check"></i>
                                             </span>
-                                            <span class="text">保存</span>
-                                        </button>
-                                    </div>
-                                </div>
-
+                                    <span class="text">保存设置</span>
+                                </button>
                             </div>
-
                         </div>
                     </div>
 
@@ -585,13 +568,15 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Transliteration JavaScript-->
+<script src="vendor/transliteration/bundle.umd.min.js"></script>
+
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
 <script src="vendor/sortablejs/Sortable.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 <!--Sortable-->
 <script type="text/javascript">
     //内容类型字段管理 使用sortablejs库调整字段权重
@@ -610,6 +595,7 @@
         },
     });
 </script>
+
 
 </body>
 

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>文本格式设置</title>
+    <title>用户设置</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -255,8 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">系统</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">文本格式设置</li>
+                        <li class="breadcrumb-item"><a href="#">内容</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">添加类型</li>
                     </ol>
                 </nav>
 
@@ -461,90 +461,103 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">文本格式设置</h1>
-
+                    <h1 class="h3 mb-0 text-gray-800">用户设置</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
-                    <!-- 添加提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">文本格式用于过滤已格式化类型的内容字段。文本格式将按照此页定义的顺序出现在内容编辑页面。用户可用的第一个格式将被视为已选择默认值。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
+                    <!-- 用户设置 -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">文本格式列表</h6>
+                        <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active small" href="edit-content-type.html">设置</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link small" href="manage-content-type-field.html">管理字段</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link small" href="manage-content-field-form-show.html">管理字段显示</a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="card-body">
-                            <a href="add-text-format.html" class="d-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加文本格式</a>
-
-                            <div class="table-responsive mt-3">
-                                <form action="#" method="post">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">名称</th>
-                                                <th scope="col">角色</th>
-                                                <th scope="col">操作</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody id="js-sortable-tbody">
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
-
-                                                </td>
-                                            </tr>
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-
-                                    </table>
-
-                                </form>
-
+                            <form action="#" method="post">
                                 <div class="form-row">
-                                    <div class="col-12">
-                                        <button class="btn btn-primary btn-sm btn-icon-split">
-                                            <span class="icon text-white-50">
-                                              <i class="fas fa-check"></i>
-                                            </span>
-                                            <span class="text">保存</span>
-                                        </button>
+                                    <div class="col-12 mb-3">
+                                        <label class="font-weight-bolder">注册设置</label>
+                                        <div class="form-check">
+                                            <div class="form-group mb-2">
+                                                <input class="form-check-input mr-2" type="checkbox" value="">
+                                                <label class="form-check-label">
+                                                    用户注册是否需要管理员审核
+                                                </label>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <input class="form-check-input mr-2" type="checkbox" value="">
+                                                <label class="form-check-label">
+                                                    用户注册是否需要邮箱验证
+                                                </label>
+                                                <div class="text-muted small">
+                                                    新用户在第一次登录时将会被请求验证他们的电邮地址，并会被系统指派一个密码。禁用此项，用户会在注册后马上登入网站，并在注册过程中选择他们自己的密码。
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
 
-                            </div>
+                                <div class="form-row">
+                                    <div class="col-12 mb-3">
+                                        <label class="font-weight-bolder">注册邮件设置</label>
+                                        <div class="">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="list-group" id="list-tab" role="tablist">
+                                                        <a class="list-group-item list-group-item-action active"
+                                                           id="edit-email-admin-created" data-toggle="list"
+                                                           href="#email-admin-created" role="tab">
+                                                            Home
+                                                        </a>
+                                                        <a class="list-group-item list-group-item-action" id="" data-toggle="list"
+                                                           href="#list-profile" role="tab" aria-controls="profile">
+                                                            Profile
+                                                        </a>
+                                                        <a class="list-group-item list-group-item-action" id="" data-toggle="list"
+                                                           href="#list-messages" role="tab" aria-controls="messages">
+                                                            Messages
+                                                        </a>
+                                                        <a class="list-group-item list-group-item-action" id="" data-toggle="list"
+                                                           href="#list-settings" role="tab" aria-controls="settings">
+                                                            Settings
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="tab-content" id="nav-tabContent">
+                                                        <div class="tab-pane fade show active" id="email-admin-created" role="tabpanel"
+                                                             aria-labelledby="edit-email-admin-created">
 
+                                                        </div>
+                                                        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                                                        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                                                        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary btn-sm btn-icon-split">
+                                            <span class="icon text-white-50">
+                                              <i class="fas fa-check"></i>
+                                            </span>
+                                    <span class="text">保存设置</span>
+                                </button>
+
+                            </form>
                         </div>
                     </div>
 
@@ -585,13 +598,15 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Transliteration JavaScript-->
+<script src="vendor/transliteration/bundle.umd.min.js"></script>
+
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
 <script src="vendor/sortablejs/Sortable.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 <!--Sortable-->
 <script type="text/javascript">
     //内容类型字段管理 使用sortablejs库调整字段权重
@@ -610,6 +625,7 @@
         },
     });
 </script>
+
 
 </body>
 

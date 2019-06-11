@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>文本格式设置</title>
+    <title>添加文本格式</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -255,8 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">系统</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">文本格式设置</li>
+                        <li class="breadcrumb-item"><a href="#">内容</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">添加类型</li>
                     </ol>
                 </nav>
 
@@ -461,90 +461,194 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">文本格式设置</h1>
-
+                    <h1 class="h3 mb-0 text-gray-800">添加文本格式</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
-                    <!-- 添加提示 Card Example -->
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="small text-muted">文本格式用于过滤已格式化类型的内容字段。文本格式将按照此页定义的顺序出现在内容编辑页面。用户可用的第一个格式将被视为已选择默认值。</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
+                    <!-- 添加文本格式 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">文本格式列表</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">添加文本格式</h6>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                     aria-labelledby="dropdownContentTypesMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-boxes text-gray-500 pr-2"></i>文本格式设置</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <a href="add-text-format.html" class="d-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加文本格式</a>
-
-                            <div class="table-responsive mt-3">
+                            <div class="create-content-type-form">
                                 <form action="#" method="post">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">名称</th>
-                                                <th scope="col">角色</th>
-                                                <th scope="col">操作</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody id="js-sortable-tbody">
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
-
-                                                </td>
-                                            </tr>
-                                            <tr class="js-sortable-item">
-                                                <td>
-                                                    <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
-                                                    标题
-                                                    <input type="hidden" class="input-field-weight form-control form-control-sm w-auto" name="field[weight]" required>
-                                                </td>
-                                                <td>纯文本</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-
-                                    </table>
-
-                                </form>
-
-                                <div class="form-row">
-                                    <div class="col-12">
-                                        <button class="btn btn-primary btn-sm btn-icon-split">
-                                            <span class="icon text-white-50">
-                                              <i class="fas fa-check"></i>
-                                            </span>
-                                            <span class="text">保存</span>
-                                        </button>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="_name" class="font-weight-bolder">名称<sup class="text-danger">*</sup></label>
+                                            <input type="text" id="_name" name="" class="transliterate form-control form-control-sm" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 form-inline form-alias d-none">
+                                            <label for="content_type_alias">机读名称<sup class="text-danger">*</sup></label>
+                                            <div class="ml-2 text-alias-wrapper mb-2 mb-sm-0">
+                                                <span class="text-alias"></span>
+                                                <a class="js-modify-alias badge badge-secondary ml-2" href="#">编辑</a>
+                                            </div>
+                                            <div class="input-alias-wrapper d-none">
+                                                <input id="content_type_alias" type="hidden" name="" class="input-alias form-control form-control-sm" required="required">
+                                            </div>
+                                            <div class="small mt-1 text-muted d-none">唯一的机读内容类型名字。这个名字必须只能包含小写字母，数字和下划线。</div>
+                                        </div>
                                     </div>
-                                </div>
 
+                                    <div class="form-row">
+                                        <div class="col-12 mb-3">
+                                            <label class="font-weight-bolder">用户组</label>
+                                            <div class="form-check">
+                                                <label class="sr-only">用户组</label>
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        管理员
+                                                    </label>
+                                                </div>
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        已注册用户
+                                                    </label>
+                                                </div>
+
+                                                <div class="small text-muted">选定哪个用户组可以使用当前文本格式，至少勾选一项。</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-12 mb-3">
+                                            <label class="font-weight-bolder">启用过滤器</label>
+                                            <div class="form-group mb-1">
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        限制允许的 HTML 标。
+                                                    </label>
+                                                </div>
+                                                <div class="form-group ml-3 filter-settings border p-2">
+                                                    <label>允许的html标签</label>
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                    <div class="text-muted small mb-2">
+                                                        可使用的 HTML 标记的列表。缺省情况下，对于所有 HTML 标记，仅允许 lang 和 dir 属性。每个 HTML 标记都可有一些属性被视作是该 HTML 标记的允许属性名。每个属性可允许所有值，或者仅允许特定值。属性名称或值可写作前缀和通配符，例如，jump-*。始终剔除 JavaScript 事件属性、JavaScript URL 和 CSS。
+                                                    </div>
+                                                    <div class="form-inline">
+                                                        <input class="mr-2" type="checkbox" value="">
+                                                        <label class="form-check-label">
+                                                            在长过滤器提示中显示基本的HTML帮助
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-inline">
+                                                        <input class="mr-2" type="checkbox" value="">
+                                                        <label class="form-check-label">
+                                                            向所有链接添加rel="nofollow"
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-1">
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        将任何HTML显示为纯文本。
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        将换行符号转换为 HTML（也就是br及p标签）。
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        将URL转换成链接。
+                                                    </label>
+                                                </div>
+                                                <div class="form-group ml-3 filter-settings border p-2">
+                                                    <label>链接文字字符的最大长度</label>
+                                                    <input class="form-control form-control-sm col-3" type="number" value="72">
+
+                                                    <div class="text-muted small mb-2">
+                                                        为避免破坏布局，超过此数字长度的URL字符串将被自动截断。只是显示文字被截断，链接本身并不会被破坏。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <div class="form-inline mb-2">
+                                                    <input class="form-check-input mr-2" type="checkbox" value="">
+                                                    <label class="form-check-label">
+                                                        将图像限制为此站点。
+                                                    </label>
+                                                    <div class="text-muted small">
+                                                        <em>通过将不在此站点上托管的 img 标签src源替换为占位符图像以禁止使用这些源。</em>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-12 mb-3">
+                                            <label class="font-weight-bolder">过滤器顺序</label>
+                                            <div class="table-responsive mb-2">
+                                                <table class="table table-hover">
+                                                    <tbody id="js-sortable-tbody">
+                                                        <tr class="js-sortable-item">
+                                                            <td>
+                                                                <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                                将图像限制为此站点
+                                                                <input type="hidden" class="input-field-weight">
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="js-sortable-item">
+                                                            <td>
+                                                                <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                                将图像限制为此站点
+                                                                <input type="hidden" class="input-field-weight">
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="js-sortable-item">
+                                                            <td>
+                                                                <a href="#" class="js-modify-field-weight js-sortable"><i class="fas fa-arrows-alt"></i></a>
+                                                                将图像限制为此站点
+                                                                <input type="hidden" class="input-field-weight">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <a href="add-field.html" class="btn btn-primary btn-sm btn-icon-split">
+                                            <span class="icon text-white-50">
+                                              <i class="fas fa-arrow-right"></i>
+                                            </span>
+                                                <span class="text">保存并添加字段</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-
                         </div>
                     </div>
 
@@ -585,13 +689,15 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Transliteration JavaScript-->
+<script src="vendor/transliteration/bundle.umd.min.js"></script>
+
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
 <script src="vendor/sortablejs/Sortable.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 <!--Sortable-->
 <script type="text/javascript">
     //内容类型字段管理 使用sortablejs库调整字段权重
@@ -610,6 +716,7 @@
         },
     });
 </script>
+
 
 </body>
 
