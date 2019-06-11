@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>管理用户</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -258,8 +258,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">管理内容</li>
+                        <li class="breadcrumb-item"><a href="#">用户</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">管理用户</li>
                     </ol>
                 </nav>
 
@@ -464,9 +464,9 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">管理内容</h1>
+                    <h1 class="h3 mb-0 text-gray-800">管理用户</h1>
                     <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容</a>
+                            class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加用户</a>
                 </div>
 
                 <!-- FULL WIDTH Content -->
@@ -474,30 +474,29 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <!--内容过滤-->
-                            <div class="content-filter">
+                            <!--用户过滤-->
+                            <div class="filter">
                                 <form action="#" method="post">
                                     <div class="form-row">
                                         <div class="col-12 col-md-6 mb-2 mb-md-0">
-                                            <label for="filter_content_title" class="sr-only">标题</label>
+                                            <label for="filter_user" class="sr-only">搜索用户名或用户邮箱</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                   id="filter_content_title" placeholder="内容标题" value="">
+                                                   id="filter_user" placeholder="搜索用户名或用户邮箱" value="">
                                         </div>
                                         <div class="col-12 col-md-2 mb-2 mb-md-0">
-                                            <label for="filter_content_type" class="sr-only">内容类型</label>
-                                            <select class="form-control form-control-sm" id="filter_content_type">
-                                                <option selected>－内容类型－</option>
-                                                <option value="1">文章</option>
-                                                <option value="2">页面</option>
-                                                <option value="3">商品类型</option>
+                                            <label for="filter_user_status" class="sr-only">用户状态</label>
+                                            <select class="form-control form-control-sm" id="filter_user_status">
+                                                <option selected>－用户状态－</option>
+                                                <option value="1">正常</option>
+                                                <option value="2">锁定</option>
                                             </select>
                                         </div>
                                         <div class="col-12 col-md-2 mb-2 mb-md-0">
-                                            <label for="filter_content_published" class="sr-only">发布状态</label>
+                                            <label for="filter_content_published" class="sr-only">用户组</label>
                                             <select class="form-control form-control-sm" id="filter_content_published">
-                                                <option selected>－发布状态－</option>
-                                                <option value="1">已发布</option>
-                                                <option value="2">未发布</option>
+                                                <option selected>－用户组－</option>
+                                                <option value="1">管理员</option>
+                                                <option value="2">注册用户</option>
                                             </select>
                                         </div>
                                         <div class="col-12 col-md-2 mb-2 mb-md-0">
@@ -517,7 +516,7 @@
                     <!-- 管理内容 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">内容列表</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">用户列表</h6>
                             <div class="dropdown no-arrow">
                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownNewContentsMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -526,7 +525,7 @@
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                      aria-labelledby="dropdownNewContentsMenuLink">
                                     <a class="dropdown-item" href="#"><i
-                                            class="fa fa-plus-circle text-gray-500 pr-2"></i>添加内容</a>
+                                            class="fa fa-plus-circle text-gray-500 pr-2"></i>添加用户</a>
                                 </div>
                             </div>
                         </div>
@@ -540,9 +539,9 @@
                                             <label for="select_bat_option_top" class="sr-only">批量操作</label>
                                             <select id="select_bat_option_top" class="form-control form-control-sm" name="">
                                                 <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
+                                                <option value="lock">锁定选中用户</option>
+                                                <option value="1">解锁选中用户</option>
+                                                <option value="2">取消用户</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-sm-3 pr-2 mb-3">
@@ -565,7 +564,7 @@
                                         </div>
                                     </div>
 
-                                    <!--内容列表-->
+                                    <!--用户列表-->
                                     <div class="table-responsive">
                                         <table class="table table-striped" id="dataTable">
                                             <thead>
@@ -573,32 +572,49 @@
                                                 <th scope="col">
                                                     <input type="checkbox" class="form-check check-all" title="选择所有行">
                                                 </th>
-                                                <th scope="col">标题</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">内容类型</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">作者</th>
-                                                <th scope="col">状态</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">更新日期</th>
+                                                <th scope="col">用户名</th>
+                                                <th scope="col" class="d-none d-sm-table-cell">状态</th>
+                                                <th scope="col">角色</th>
+                                                <th scope="col" class="d-none d-sm-table-cell">注册日期</th>
+                                                <th scope="col" class="d-none d-sm-table-cell">上次登录</th>
                                                 <th scope="col">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td scope="row">
-                                                    <input type="checkbox" class="form-check" value="">
-                                                </td>
-                                                <td><a href="#">这是一篇文章的标题1</a></td>
-                                                <td class="d-none d-sm-table-cell">文章</td>
-                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
-                                                <td>已发布</td>
-                                                <td class="d-none d-sm-table-cell">2019-05-21 19:34:21</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+                                                <tr>
+                                                    <td scope="row">
+                                                        <input type="checkbox" class="form-check" value="">
+                                                    </td>
+                                                    <td><a href="#">admin</a></td>
+                                                    <td class="d-none d-sm-table-cell">正常</td>
+                                                    <td>管理员</td>
+                                                    <td class="d-none d-sm-table-cell">2019-05-21 19:34:21</td>
+                                                    <td class="d-none d-sm-table-cell">3天前</td>
+                                                    <td class="text-nowrap">
+                                                        <a href="edit-user.html" class="btn btn-sm btn-primary shadow-sm"><i
+                                                                class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                        <a href="delete-user.html" class="btn btn-sm btn-danger shadow-sm"><i
+                                                                class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
 
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">
+                                                        <input type="checkbox" class="form-check" value="">
+                                                    </td>
+                                                    <td><a href="#">qwwdezone</a></td>
+                                                    <td class="d-none d-sm-table-cell">正常</td>
+                                                    <td></td>
+                                                    <td class="d-none d-sm-table-cell">2019-05-21 19:34:21</td>
+                                                    <td class="d-none d-sm-table-cell">3天前</td>
+                                                    <td class="text-nowrap">
+                                                        <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
+                                                                class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
+                                                        <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
+                                                                class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
+
+                                                    </td>
+                                                </tr>
 
                                             </tbody>
                                         </table>
@@ -610,9 +626,9 @@
                                             <label for="select_bat_option_bottom" class="sr-only">批量操作</label>
                                             <select id="select_bat_option_bottom" class="form-control form-control-sm" name="">
                                                 <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
+                                                <option value="lock">锁定选中用户</option>
+                                                <option value="1">解锁选中用户</option>
+                                                <option value="2">取消用户</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-sm-3 pr-2 mb-3">

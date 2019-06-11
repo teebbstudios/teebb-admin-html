@@ -9,15 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>控制台</title>
+    <title>删除用户</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-
-    <!-- Sweetalert2 styles-->
-    <link href="vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -85,7 +82,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">类型管理:</h6>
-                    <a class="collapse-item" href="add-content-type.html">添加类型</a>
+                    <a class="collapse-item" href="utilities-color.html">添加类型</a>
                     <a class="collapse-item" href="utilities-border.html">管理类型</a>
                 </div>
             </div>
@@ -258,8 +255,8 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-block">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">内容</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">管理内容</li>
+                        <li class="breadcrumb-item"><a href="#">用户</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">删除用户</li>
                     </ol>
                 </nav>
 
@@ -464,195 +461,58 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">管理内容</h1>
-                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-plus-circle fa-sm text-white-50 pr-2"></i>添加内容</a>
+                    <h1 class="h3 mb-0 text-gray-800">删除用户</h1>
                 </div>
 
                 <!-- FULL WIDTH Content -->
                 <div class="full-width-wrapper">
 
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <!--内容过滤-->
-                            <div class="content-filter">
-                                <form action="#" method="post">
-                                    <div class="form-row">
-                                        <div class="col-12 col-md-6 mb-2 mb-md-0">
-                                            <label for="filter_content_title" class="sr-only">标题</label>
-                                            <input type="text" class="form-control form-control-sm"
-                                                   id="filter_content_title" placeholder="内容标题" value="">
-                                        </div>
-                                        <div class="col-12 col-md-2 mb-2 mb-md-0">
-                                            <label for="filter_content_type" class="sr-only">内容类型</label>
-                                            <select class="form-control form-control-sm" id="filter_content_type">
-                                                <option selected>－内容类型－</option>
-                                                <option value="1">文章</option>
-                                                <option value="2">页面</option>
-                                                <option value="3">商品类型</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-2 mb-2 mb-md-0">
-                                            <label for="filter_content_published" class="sr-only">发布状态</label>
-                                            <select class="form-control form-control-sm" id="filter_content_published">
-                                                <option selected>－发布状态－</option>
-                                                <option value="1">已发布</option>
-                                                <option value="2">未发布</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-2 mb-2 mb-md-0">
-                                            <button class="btn btn-secondary btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                  <i class="fas fa-filter"></i>
-                                                </span>
-                                                <span class="text">过滤</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 管理内容 -->
+                    <!-- 删除用户 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">内容列表</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">删除 qwwdezone</h6>
                             <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownNewContentsMenuLink"
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownContentTypesMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-500"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                     aria-labelledby="dropdownNewContentsMenuLink">
-                                    <a class="dropdown-item" href="#"><i
-                                            class="fa fa-plus-circle text-gray-500 pr-2"></i>添加内容</a>
-                                </div>
                             </div>
                         </div>
                         <div class="card-body">
-
-                            <div class="content-list mt-3">
+                            <div class="form">
                                 <form action="#" method="post">
-                                    <!--内容批量操作-->
-                                    <div class="content-bat-option form-row">
-                                        <div class="col-6 col-sm-3 pr-2 mb-3">
-                                            <label for="select_bat_option_top" class="sr-only">批量操作</label>
-                                            <select id="select_bat_option_top" class="form-control form-control-sm" name="">
-                                                <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6 col-sm-3 pr-2 mb-3">
-                                            <button class="btn btn-secondary btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                  <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">应用</span>
-                                            </button>
-                                        </div>
 
-                                        <div class="col-12 col-sm-6 form-inline mb-3 justify-content-sm-end">
-                                            <label for="select_page_limit_top">共123个 每页显示</label>
-                                            <select id="select_page_limit_top" class="form-control form-control-sm select-page-limit" name="">
-                                                <option selected>15</option>
-                                                <option value="1">25</option>
-                                                <option value="2">50</option>
-                                                <option value="2">100</option>
+                                    <div class="form-group">
+                                        <label>当删除qwwdezone用户时，如何处理该用户名下的内容？</label>
+                                        <div class="form-inline">
+                                            <input class="form-check-input" type="radio" name="user_status" id="delete_user" value="" checked>
+                                            <label class="form-check-label" for="delete_user">
+                                                删除该账号及其内容。
+                                            </label>
+                                        </div>
+                                        <div class="form-inline">
+                                            <input class="form-check-input" type="radio" name="user_status" id="delete_user_only" value="">
+                                            <label class="form-check-label" for="delete_user_only">
+                                                将这些内容的作者修改为：
+                                            </label>
+                                            <select class="form-control form-control-sm" id="users">
+                                                <option >admin(admin)</option>
+                                                <option >admin(admin)</option>
+                                                <option >admin(admin)</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <!--内容列表-->
-                                    <div class="table-responsive">
-                                        <table class="table table-striped" id="dataTable">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">
-                                                    <input type="checkbox" class="form-check check-all" title="选择所有行">
-                                                </th>
-                                                <th scope="col">标题</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">内容类型</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">作者</th>
-                                                <th scope="col">状态</th>
-                                                <th scope="col" class="d-none d-sm-table-cell">更新日期</th>
-                                                <th scope="col">操作</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td scope="row">
-                                                    <input type="checkbox" class="form-check" value="">
-                                                </td>
-                                                <td><a href="#">这是一篇文章的标题1</a></td>
-                                                <td class="d-none d-sm-table-cell">文章</td>
-                                                <td class="d-none d-sm-table-cell"><a href="#">admin</a></td>
-                                                <td>已发布</td>
-                                                <td class="d-none d-sm-table-cell">2019-05-21 19:34:21</td>
-                                                <td class="text-nowrap">
-                                                    <a href="#" class="btn btn-sm btn-primary shadow-sm"><i
-                                                            class="fas fa-pen fa-sm text-white-50 pr-2"></i>编辑</a>
-                                                    <a href="#" class="btn btn-sm btn-danger shadow-sm btn-delete-content"><i
-                                                            class="fas fa-trash-alt fa-sm text-white-50 pr-2"></i>删除</a>
-
-                                                </td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
+                                    <div class="form-group">
+                                        <a href="add-field.html" class="btn btn-primary btn-sm btn-icon-split">
+                                        <span class="icon text-white-50">
+                                          <i class="fas fa-check"></i>
+                                        </span>
+                                            <span class="text">取消用户</span>
+                                        </a>
                                     </div>
-
-                                    <!--内容批量操作-->
-                                    <div class="content-bat-option form-row">
-                                        <div class="col-6 col-sm-3 pr-2 mb-3">
-                                            <label for="select_bat_option_bottom" class="sr-only">批量操作</label>
-                                            <select id="select_bat_option_bottom" class="form-control form-control-sm" name="">
-                                                <option selected>批量操作</option>
-                                                <option>删除内容</option>
-                                                <option value="1">取消发布内容</option>
-                                                <option value="2">发布内容</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6 col-sm-3 pr-2 mb-3">
-                                            <button class="btn btn-secondary btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                  <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">应用</span>
-                                            </button>
-                                        </div>
-
-                                        <div class="col-12 col-sm-6 form-inline mb-3 justify-content-sm-end">
-                                            <label for="select_page_limit_bottom">共123个 每页显示</label>
-                                            <select id="select_page_limit_bottom" class="form-control form-control-sm select-page-limit" name="">
-                                                <option selected>15</option>
-                                                <option value="1">25</option>
-                                                <option value="2">50</option>
-                                                <option value="2">100</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination justify-content-end">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">上一页</a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">下一页</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-
                                 </form>
-
                             </div>
-
                         </div>
                     </div>
 
@@ -693,14 +553,15 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Transliteration JavaScript-->
+<script src="vendor/transliteration/bundle.umd.min.js"></script>
+
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
 
-<!-- Sweetalert2 Javascript-->
-<script src="vendor/sweetalert2/sweetalert2.all.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
+
 
 </body>
 
