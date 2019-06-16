@@ -477,7 +477,8 @@
                             <div class="form-group">
                                 <label for="smtp_account" class="font-weight-bolder">发送方电邮地址</label>
                                 <input type="email" id="smtp_account" class="form-control form-control-sm col-md-6" name="">
-                                <div class="text-muted small">这是所有发送出去的电邮注明的发送方电邮地址。为了防止发出的邮件被判为垃圾邮件，请使用站点电子邮件地址。</div>
+                                <div class="text-muted small">
+                                    这是所有发送出去的电邮注明的发送方电邮地址。为了防止发出的邮件被判为垃圾邮件，默认使用站点邮件地址，.env配置中也要使用站点地址进行配置。</div>
                             </div>
                             <div class="form-group">
                                 <label for="smtp_sender_name" class="font-weight-bolder">发送方名称</label>
@@ -486,31 +487,31 @@
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="smtp_server" class="font-weight-bolder">SMTP(邮件传输)服务器设置</label>
-                                <input type="text" id="smtp_server" class="form-control form-control-sm col-md-6" name="">
-                                <div class="text-muted small">这是你发信的SMTP服务器地址。格式如“smtp.163.com”</div>
-                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="smtp_server" class="font-weight-bolder">SMTP(邮件传输)服务器设置</label>-->
+                                <!--<input type="text" id="smtp_server" class="form-control form-control-sm col-md-6" name="">-->
+                                <!--<div class="text-muted small">这是你发信的SMTP服务器地址。格式如“smtp.163.com”</div>-->
+                            <!--</div>-->
 
-                            <div class="form-group">
-                                <label for="smtp_port" class="font-weight-bolder">SMTP(邮件传输)服务端口</label>
-                                <input type="number" id="smtp_port" class="form-control form-control-sm col-md-6" name="">
-                                <div class="text-muted small">
-                                    普通smtp默认端口为 25。具体端口数据请查看您的smtp服务器相关说明。
-                                </div>
-                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="smtp_port" class="font-weight-bolder">SMTP(邮件传输)服务端口</label>-->
+                                <!--<input type="number" id="smtp_port" class="form-control form-control-sm col-md-6" name="">-->
+                                <!--<div class="text-muted small">-->
+                                    <!--普通smtp默认端口为 25。具体端口数据请查看您的smtp服务器相关说明。-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="form-group">
-                                <label for="smtp_encrypt" class="font-weight-bolder">使用加密协议</label>
-                                <select id="smtp_encrypt" class="form-control form-control-sm col-md-3">
-                                    <option value="default">不使用加密协议</option>
-                                    <option value="tls">使用TLS加密协议</option>
-                                    <option value="ssl">使用SSL加密协议</option>
-                                </select>
-                                <div class="text-muted small">
-                                    这允许SMTP服务器使用相应加密通讯进行连接。
-                                </div>
-                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="smtp_encrypt" class="font-weight-bolder">使用加密协议</label>-->
+                                <!--<select id="smtp_encrypt" class="form-control form-control-sm col-md-3">-->
+                                    <!--<option value="default">不使用加密协议</option>-->
+                                    <!--<option value="tls">使用TLS加密协议</option>-->
+                                    <!--<option value="ssl">使用SSL加密协议</option>-->
+                                <!--</select>-->
+                                <!--<div class="text-muted small">-->
+                                    <!--这允许SMTP服务器使用相应加密通讯进行连接。-->
+                                <!--</div>-->
+                            <!--</div>-->
 
                             <div class="form-group">
                                 <label for="send_test_email" class="font-weight-bolder">发送测试邮件</label>
