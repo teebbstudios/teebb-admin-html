@@ -524,12 +524,30 @@
                                             </label>
                                         </div>
                                     </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-inline form-check col-12 mb-3">
+                                            <input class="form-control form-control-sm mr-2" type="checkbox" value="" id="check_field_show">
+                                            <label for="check_field_required">
+                                                启用显示字段
+                                            </label>
+                                            <div class="small text-muted">当编辑文件时，显示选项允许用户选择一个文件是否被显示。</div>
+                                        </div>
+                                    </div>
 
                                     <div class="form-row">
                                         <div class="col-12 col-md-6 mb-3">
                                             <label for="reference_file_allow_ext">允许的文件扩展名<sup class="text-danger">*</sup></label>
                                             <input id="reference_file_allow_ext" type="text" class="input-allow-extension-name form-control form-control-sm" value="txt" required="required">
                                             <div class="small text-muted">用英文逗号隔开后缀名，不包括后缀名前面的点。自动替换部分符号为英文逗号。</div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="reference_image_upload_dir">文件上传目录</label>
+                                            <input id="reference_image_upload_dir" type="text" class="input-upload-dir form-control form-control-sm" value="[date.custom.Y]-[date.custom.m]" required="required">
+                                            <div class="small text-muted">可选项，文件上传后被存储于“上传目的地”中的子目录。开始和结尾都不要包含斜线。</div>
                                         </div>
                                     </div>
 
