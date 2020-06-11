@@ -19,7 +19,8 @@
     <!--tui.image-editor CSS -->
     <link type="text/css" href="vendor/tui-color-picker/tui-color-picker.css" rel="stylesheet">
 
-    <link type="text/css" href="vendor/tui-image-editor/examples/css/service-basic.css" rel="stylesheet">
+    <link type="text/css" href="css/service-basic.css" rel="stylesheet">
+    <link type="text/css" href="vendor/tui-image-editor/dist/tui-image-editor.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -698,7 +699,7 @@
                                         <li class="menu-item btn btn-sm">
                                             <div id="tui-icon-color-picker" class="small">图标颜色</div>
                                         </li>
-                                        <!--<li class="menu-item border btn btn-sm" id="btn-register-icon">选择图标</li>-->
+                                        <!-- <li class="menu-item border btn btn-sm" id="btn-register-icon">选择图标</li> -->
                                         <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="arrow">→</li>
                                         <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="check">✓</li>
                                         <li class="menu-item icon-board btn-sm rounded icon-text" data-icon-type="cancel">✕</li>
@@ -975,15 +976,19 @@
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.0/fabric.js"></script> -->
 <script type="text/javascript" src="vendor/fabric/fabric.js"></script>
-<script type="text/javascript" src="vendor/tui-code-snippet/tui-code-snippet.min.js"></script>
+<script type="text/javascript" src="vendor/tui-code-snippet/tui-code-snippet.js"></script>
 <script type="text/javascript" src="vendor/tui-color-picker/tui-color-picker.min.js"></script>
 <script type="text/javascript" src="vendor/file-saver/FileSaver.min.js"></script>
-<script type="text/javascript" src="vendor/tui-image-editor/dist/tui-image-editor.min.js"></script>
-<script type="text/javascript" src="js/features/tui-image-editor-service-basic.js"></script>
+        <!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.code-snippet/v1.5.0/tui-code-snippet.min.js"></script> -->
+        <!-- <script type="text/javascript" src="https://uicdn.toast.com/tui-color-picker/v2.2.3/tui-color-picker.min.js"></script> -->
+<script type="text/javascript" src="vendor/tui-image-editor/dist/tui-image-editor.js"></script>
+<script type="text/javascript" src="js/features/service-basic.js"></script>
 <script type="text/javascript">
+console.log(imageEditor);
     // Load sample image
-    imageEditor.loadImageFromURL('http://e.hiphotos.baidu.com/image/pic/item/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg', 'SampleImage').then(function(sizeValue) {
+    imageEditor.loadImageFromURL('img/undraw_posting_photo.svg', 'SampleImage').then(function(sizeValue) {
         // console.log(sizeValue);
         imageEditor.clearUndoStack();
     });
